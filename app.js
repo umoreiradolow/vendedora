@@ -455,15 +455,13 @@
 
   function setupCheckoutTracking() {
     document.querySelectorAll('[data-checkout]').forEach(function (btn) {
+      var key = btn.getAttribute('data-checkout');
+      if (key === 'simples') return; // Handled inside setupDownsell decline trigger
+      
       btn.addEventListener('click', function (e) {
-        var key = btn.getAttribute('data-checkout');
         // If they click completo or downsell, immediately block the exit intent popup from showing
         if (key === 'completo' || key === 'downsell') {
           markDownsellAsShown();
-        }
-        // If it's simples and we haven't shown downsell yet, we don't trigger checkout yet
-        if (key === 'simples' && !hasShownDownsell) {
-          return;
         }
         fireInitiateCheckout(key);
       });
@@ -531,25 +529,12 @@
       });
     }
 
-    // Intercept clicks on Pacote Simples CTA button
+    // Intercept clicks on Pacote Simples CTA button (always opens the downsell modal)
     document.querySelectorAll('[data-checkout="simples"]').forEach(function (btn) {
       btn.addEventListener('click', function (e) {
-        if (!hasShownDownsell) {
-          e.preventDefault();
-          markDownsellAsShown();
-          openDownsellModal();
-        } else {
-          // If already shown once, redirect directly to simples checkout
-          if (CHECKOUT.simples && CHECKOUT.simples !== '#') {
-            e.preventDefault();
-            fireInitiateCheckout('simples');
-            window.location.href = CHECKOUT.simples;
-          } else {
-            e.preventDefault();
-            var offerSec = document.getElementById('oferta');
-            if (offerSec) offerSec.scrollIntoView({ behavior: 'smooth' });
-          }
-        }
+        e.preventDefault();
+        markDownsellAsShown();
+        openDownsellModal();
       });
     });
 
