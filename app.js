@@ -409,6 +409,8 @@
   function setupCheckout() {
     document.querySelectorAll('[data-checkout]').forEach(function (a) {
       var key = a.getAttribute('data-checkout');
+      // Skip simples checkout on load to prevent external pixel wrappers from intercepting
+      if (key === 'simples') return;
       if (CHECKOUT[key] && CHECKOUT[key] !== '#') a.setAttribute('href', CHECKOUT[key]);
     });
   }
@@ -455,6 +457,10 @@
     document.querySelectorAll('[data-checkout]').forEach(function (btn) {
       btn.addEventListener('click', function (e) {
         var key = btn.getAttribute('data-checkout');
+        // If they click completo or downsell, immediately block the exit intent popup from showing
+        if (key === 'completo' || key === 'downsell') {
+          markDownsellAsShown();
+        }
         // If it's simples and we haven't shown downsell yet, we don't trigger checkout yet
         if (key === 'simples' && !hasShownDownsell) {
           return;
@@ -467,7 +473,16 @@
   /* ============================================================
      DOWNSELL POPUP MODAL & EXIT INTENT
      ============================================================ */
-  var hasShownDownsell = false;
+  var hasShownDownsell = sessionStorage.getItem('hasShownDownsell') === 'true';
+
+  function markDownsellAsShown() {
+    hasShownDownsell = true;
+    try {
+      sessionStorage.setItem('hasShownDownsell', 'true');
+    } catch (err) {
+      console.warn('sessionStorage is not accessible:', err);
+    }
+  }
 
   function openDownsellModal() {
     var modal = document.getElementById('downsell-modal');
@@ -501,6 +516,7 @@
     if (declineLink) {
       declineLink.addEventListener('click', function (e) {
         e.preventDefault();
+        markDownsellAsShown(); // Prevent exit intent popup on redirect
         closeDownsellModal();
         // Trigger initiate checkout event for simples package
         fireInitiateCheckout('simples');
@@ -520,11 +536,15 @@
       btn.addEventListener('click', function (e) {
         if (!hasShownDownsell) {
           e.preventDefault();
-          hasShownDownsell = true;
+          markDownsellAsShown();
           openDownsellModal();
         } else {
-          // If already shown once, let the click go through naturally (to simples checkout)
-          if (CHECKOUT.simples === '#') {
+          // If already shown once, redirect directly to simples checkout
+          if (CHECKOUT.simples && CHECKOUT.simples !== '#') {
+            e.preventDefault();
+            fireInitiateCheckout('simples');
+            window.location.href = CHECKOUT.simples;
+          } else {
             e.preventDefault();
             var offerSec = document.getElementById('oferta');
             if (offerSec) offerSec.scrollIntoView({ behavior: 'smooth' });
@@ -536,7 +556,7 @@
     // Exit Intent - Desktop (detect mouse leaving top of the screen)
     document.addEventListener('mouseleave', function (e) {
       if (e.clientY < 20 && !hasShownDownsell) {
-        hasShownDownsell = true;
+        markDownsellAsShown();
         openDownsellModal();
       }
     });
@@ -550,7 +570,7 @@
 
         window.addEventListener('popstate', function (e) {
           if (e.state && e.state.exitIntent && !hasShownDownsell) {
-            hasShownDownsell = true;
+            markDownsellAsShown();
             openDownsellModal();
             // Re-push main state to allow back navigation subsequent clicks to work
             window.history.pushState({ main: true }, '');
@@ -560,6 +580,25 @@
         console.warn('History API not fully supported or restricted:', err);
       }
     }
+
+    // Global capture-phase click listener to set hasShownDownsell = true instantly for checkout links (except first simples click)
+    document.addEventListener('click', function (e) {
+      var target = e.target.closest('[data-checkout], #downsell-decline, a[href*="ggcheckout.app"]');
+      if (target) {
+        var key = target.getAttribute('data-checkout');
+        if (key !== 'simples') {
+          markDownsellAsShown();
+        }
+      }
+    }, true);
+
+    // Prevent exit-intent modal triggers when the page is unloading / navigating away
+    window.addEventListener('beforeunload', function () {
+      markDownsellAsShown();
+    });
+    window.addEventListener('pagehide', function () {
+      markDownsellAsShown();
+    });
   }
 
   /* ============================================================
@@ -569,6 +608,58 @@
     var track = document.getElementById('real-track');
     if (!track) return;
     track.innerHTML += track.innerHTML;
+  }
+
+  /* ============================================================
+     HERO ALTERNATION (Covers <=> Photos every 1.5s)
+     ============================================================ */
+  function setupHeroAlternate() {
+    var container = document.getElementById('hero-stack-container');
+    if (!container) return;
+
+    var covers = container.querySelectorAll('.cover-item');
+    var photos = container.querySelectorAll('.photo-item');
+    if (covers.length === 0 || photos.length === 0) return;
+
+    var showCovers = true;
+
+    function toggle(targetState) {
+      showCovers = targetState;
+      covers.forEach(function (el) {
+        el.classList.toggle('active', showCovers);
+      });
+      photos.forEach(function (el) {
+        el.classList.toggle('active', !showCovers);
+      });
+    }
+
+    // Custom sequential timing sequence:
+    // 1st Change: 1.5s -> show Photos
+    // 2nd Change: 3.0s (1.5s after 1st) -> show Covers
+    // 3rd Change: 5.0s (2.0s after 2nd) -> show Photos
+    // 4th Change: 8.0s (3.0s after 3rd) -> show Covers
+    // Sub-sequent loops: every 8.0s after 8s (16s, 24s, 32s, etc.)
+    setTimeout(function () {
+      toggle(false); // 1.5s -> Photos active
+
+      setTimeout(function () {
+        toggle(true); // 3.0s -> Covers active
+
+        setTimeout(function () {
+          toggle(false); // 5.0s -> Photos active
+
+          setTimeout(function () {
+            toggle(true); // 8.0s -> Covers active
+
+            // Indefinite loop: toggles state every 8 seconds
+            setInterval(function () {
+              toggle(!showCovers);
+            }, 8000);
+
+          }, 3000); // 8.0s - 5.0s = 3.0s
+        }, 2000); // 5.0s - 3.0s = 2.0s
+      }, 1500); // 3.0s - 1.5s = 1.5s
+    }, 1500); // 1.5s from start
   }
 
   /* ============================================================
@@ -594,6 +685,7 @@
     setupDownsell();
     initLegal();
     setupCheckoutTracking();
+    setupHeroAlternate();
   }
 
   /* ============================================================

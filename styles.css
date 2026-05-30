@@ -317,11 +317,20 @@ img.cover {
   position: absolute;
   top: 50%; left: 50%;
   width: 46%;
+  aspect-ratio: 5 / 7;
+  border-radius: 6px;
+  border: 1px solid rgba(255,255,255,0.4);
+  box-shadow: var(--sh-2);
+  object-fit: cover;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%,-50%) scale(0.8) rotate(0deg);
+  transition: opacity 0.55s var(--ease), transform 0.55s var(--ease);
 }
-.hero-stack .cover.c1 { transform: translate(-50%,-50%) translate(-58%, 8%) rotate(-12deg); z-index: 1; }
-.hero-stack .cover.c2 { transform: translate(-50%,-50%) translate(-20%, -4%) rotate(-4deg); z-index: 2; }
-.hero-stack .cover.c3 { transform: translate(-50%,-50%) translate(20%, -4%) rotate(4deg);  z-index: 2; }
-.hero-stack .cover.c4 { transform: translate(-50%,-50%) translate(58%, 8%) rotate(12deg);  z-index: 1; }
+.hero-stack .cover.c1.active { opacity: 1; pointer-events: auto; transform: translate(-50%,-50%) translate(-58%, 8%) rotate(-12deg) scale(1); z-index: 1; }
+.hero-stack .cover.c2.active { opacity: 1; pointer-events: auto; transform: translate(-50%,-50%) translate(-20%, -4%) rotate(-4deg) scale(1); z-index: 2; }
+.hero-stack .cover.c3.active { opacity: 1; pointer-events: auto; transform: translate(-50%,-50%) translate(20%, -4%) rotate(4deg) scale(1);  z-index: 2; }
+.hero-stack .cover.c4.active { opacity: 1; pointer-events: auto; transform: translate(-50%,-50%) translate(58%, 8%) rotate(12deg) scale(1);  z-index: 1; }
 .hero-stack-shadow {
   position: absolute;
   bottom: -2%; left: 50%; transform: translateX(-50%);
@@ -1049,36 +1058,34 @@ footer .f-links span { opacity: 0.4; }
 }
 
 .modal-copy-intro {
-  font-size: 14.5px;
+  font-size: 15.5px;
   color: var(--cinza-escuro);
   line-height: 1.5;
   margin-bottom: 14px;
+  text-align: center;
+  font-weight: 600;
 }
 
 .modal-bonus-list {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  align-items: center;
+  gap: 8px;
   background: var(--bege);
-  padding: 16px;
+  padding: 10px 14px;
   border-radius: var(--r-md);
-  margin-bottom: 18px;
+  margin-bottom: 16px;
   border: 1px dashed var(--bege-escuro);
 }
 
 .modal-bonus-list li {
   display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  font-size: 13.5px;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
   font-weight: 700;
   color: var(--cinza-escuro);
   line-height: 1.3;
-}
-
-.modal-bonus-list li .emoji {
-  flex-shrink: 0;
-  font-size: 15px;
 }
 
 .modal-anchoring {
