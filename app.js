@@ -399,17 +399,68 @@
   }
 
   /* ============================================================
-     CHECKOUT LINKS (placeholders)
+     CHECKOUT LINKS & TRACKING
      ============================================================ */
   var CHECKOUT = {
-    simples:  '#',   // TODO: substituir pelo link do Pacote Simples (R$19,90)
-    completo: '#',   // TODO: substituir pelo link do Pacote Completo (R$34,90)
-    downsell: '#'    // TODO: substituir pelo link do Downsell (R$24,90)
+    simples:  'https://ggcheckout.app/checkout/v5/9di0QnjSFhxtjUjcvQy8',   // Pacote Simples (R$19,90)
+    completo: 'https://ggcheckout.app/checkout/v5/tYv4BiudM81i95gbyR8y',   // Pacote Completo (R$34,90)
+    downsell: 'https://ggcheckout.app/checkout/v5/ZQTAihwqOtnsWEFqy3FF'    // Downsell (R$24,90)
   };
   function setupCheckout() {
     document.querySelectorAll('[data-checkout]').forEach(function (a) {
       var key = a.getAttribute('data-checkout');
       if (CHECKOUT[key] && CHECKOUT[key] !== '#') a.setAttribute('href', CHECKOUT[key]);
+    });
+  }
+
+  function fireInitiateCheckout(key) {
+    var value = 19.90;
+    var label = 'Pacote Simples';
+    if (key === 'completo') {
+      value = 34.90;
+      label = 'Pacote Completo';
+    } else if (key === 'downsell') {
+      value = 24.90;
+      label = 'Pacote Completo (Downsell)';
+    }
+
+    try {
+      if (window.fbq) {
+        window.fbq('track', 'InitiateCheckout', {
+          content_name: label,
+          value: value,
+          currency: 'BRL'
+        });
+      }
+      if (window.gtag) {
+        window.gtag('event', 'begin_checkout', {
+          currency: 'BRL',
+          value: value,
+          items: [{
+            item_name: label,
+            price: value,
+            quantity: 1
+          }]
+        });
+      }
+      if (window.clarity) {
+        window.clarity('event', 'click_checkout_' + key);
+      }
+    } catch (err) {
+      console.warn('Tracking InitiateCheckout failed:', err);
+    }
+  }
+
+  function setupCheckoutTracking() {
+    document.querySelectorAll('[data-checkout]').forEach(function (btn) {
+      btn.addEventListener('click', function (e) {
+        var key = btn.getAttribute('data-checkout');
+        // If it's simples and we haven't shown downsell yet, we don't trigger checkout yet
+        if (key === 'simples' && !hasShownDownsell) {
+          return;
+        }
+        fireInitiateCheckout(key);
+      });
     });
   }
 
@@ -451,6 +502,8 @@
       declineLink.addEventListener('click', function (e) {
         e.preventDefault();
         closeDownsellModal();
+        // Trigger initiate checkout event for simples package
+        fireInitiateCheckout('simples');
         // Redirect to Simples checkout
         if (CHECKOUT.simples && CHECKOUT.simples !== '#') {
           window.location.href = CHECKOUT.simples;
@@ -540,6 +593,7 @@
     setupCtaScroll();
     setupDownsell();
     initLegal();
+    setupCheckoutTracking();
   }
 
   /* ============================================================
