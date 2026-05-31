@@ -13,1339 +13,191 @@
     defer
   ></script>
 
-
-  <meta name="description" content="Venda para Toda a Sua Cidade — Sem Motoboy Próprio, Sem Loja e Sem Complicação. O guia completo para quem já vende comida em casa e quer chegar muito mais longe.">
-  <title>Venda para Toda a Sua Cidade — Sem Motoboy Próprio, Sem Loja e Sem Complicação</title>
+  <meta name="description" content="Como qualquer pessoa da sua cidade pode te encontrar e pedir sua comida — sem você precisar de motoboy, loja ou saber de tecnologia.">
+  <title>LP V4 ULTIMATO — Venda para Toda a Sua Cidade</title>
+  
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="styles-v4.css">
 </head>
 <body>
 
-  <!-- PROGRESS BAR -->
-  <div id="progress"></div>
+  <main class="container">
 
-  <!-- ============================================================
-       SECTION 1 — HERO
-       ============================================================ -->
-  <section id="hero" class="noise" data-screen-label="01 Hero">
-    <!-- Elemento 1 — Ticker de identificação no topo -->
-    <div class="hero-ticker" aria-hidden="true">
-      <div class="hero-ticker-track">
-        <span>Marmita · Bolo · Doce · Salgado · Açaí · Lanche · Brigadeiro · Qualquer coisa feita com carinho em casa · Marmita · Bolo · Doce · Salgado · Açaí · Lanche · Brigadeiro · Qualquer coisa feita com carinho em casa · </span>
-      </div>
-    </div>
-
-    <!-- Camada 2: Partículas flutuantes animadas (opacidade 50%) -->
-    <div class="hero-particles" aria-hidden="true">
-      <div class="p-item p-1" style="--p-left: 4%; --p-delay: 0s; --p-dur: 13s;">🍔</div>
-      <div class="p-item p-2" style="--p-left: 12%; --p-delay: 2.2s; --p-dur: 16s;">🍟</div>
-      <div class="p-item p-3" style="--p-left: 20%; --p-delay: 1.0s; --p-dur: 14s;">🌭</div>
-      <div class="p-item p-4" style="--p-left: 28%; --p-delay: 3.2s; --p-dur: 12s;">🥪</div>
-      <div class="p-item p-5" style="--p-left: 36%; --p-delay: 0.6s; --p-dur: 15s;">🌮</div>
-      <div class="p-item p-6" style="--p-left: 44%; --p-delay: 4.5s; --p-dur: 18s;">🌯</div>
-      <div class="p-item p-7" style="--p-left: 52%; --p-delay: 5.0s; --p-dur: 14s;">🍗</div>
-      <div class="p-item p-8" style="--p-left: 60%; --p-delay: 1.5s; --p-dur: 17s;">🍲</div>
-      <div class="p-item p-9" style="--p-left: 68%; --p-delay: 2.8s; --p-dur: 15s;">🥗</div>
-      <div class="p-item p-10" style="--p-left: 76%; --p-delay: 0.2s; --p-dur: 13s;">🍝</div>
-      <div class="p-item p-11" style="--p-left: 84%; --p-delay: 3.8s; --p-dur: 16s;">🍰</div>
-      <div class="p-item p-12" style="--p-left: 92%; --p-delay: 1.7s; --p-dur: 14s;">🎂</div>
-      <div class="p-item p-13" style="--p-left: 8%; --p-delay: 4.0s; --p-dur: 12s;">🍪</div>
-      <div class="p-item p-14" style="--p-left: 16%; --p-delay: 0.8s; --p-dur: 15s;">🍩</div>
-      <div class="p-item p-15" style="--p-left: 24%; --p-delay: 2.5s; --p-dur: 17s;">🍫</div>
-      <div class="p-item p-16" style="--p-left: 32%; --p-delay: 1.3s; --p-dur: 14s;">🍬</div>
-      <div class="p-item p-17" style="--p-left: 40%; --p-delay: 3.5s; --p-dur: 13s;">🍭</div>
-      <div class="p-item p-18" style="--p-left: 48%; --p-delay: 0.4s; --p-dur: 16s;">🧁</div>
-      <div class="p-item p-19" style="--p-left: 56%; --p-delay: 4.8s; --p-dur: 18s;">🍦</div>
-      <div class="p-item p-20" style="--p-left: 64%; --p-delay: 2.0s; --p-dur: 15s;">🍧</div>
-      <div class="p-item p-21" style="--p-left: 72%; --p-delay: 0.9s; --p-dur: 14s;">🍮</div>
-      <div class="p-item p-22" style="--p-left: 80%; --p-delay: 3.0s; --p-dur: 13s;">🍯</div>
-      <div class="p-item p-23" style="--p-left: 88%; --p-delay: 1.5s; --p-dur: 16s;">🍕</div>
-      <div class="p-item p-24" style="--p-left: 96%; --p-delay: 4.2s; --p-dur: 14s;">🍳</div>
-      <div class="p-item p-25" style="--p-left: 14%; --p-delay: 2.1s; --p-dur: 15s;">☕</div>
-      <div class="p-item p-26" style="--p-left: 82%; --p-delay: 5.5s; --p-dur: 17s;">🥤</div>
-    </div>
-
-    <div class="wrap">
-      <!-- Elemento 2 — Mockup 3D com efeito de profundidade (leque estático) -->
-      <div class="hero-mockup-wrap" id="hero-mockup" aria-hidden="true">
-        <div class="mockup-shadow"></div>
-        <div class="mockup-fan">
-          <img class="mockup-cover mc1" src="assets/covers/hero-1.png" alt="Embalagem Delivery 1">
-          <img class="mockup-cover mc2" src="assets/covers/hero-2.png" alt="Embalagem Delivery 2">
-          <img class="mockup-cover mc3" src="assets/covers/hero-3.png" alt="Embalagem Delivery 3">
-          <img class="mockup-cover mc4" src="assets/covers/hero-4.png" alt="Embalagem Delivery 4">
-          <img class="mockup-cover mc5" src="assets/covers/hero-5.png" alt="Embalagem Delivery 5">
-        </div>
-      </div>
-
-      <!-- Elemento 3 — Título principal em duas linhas com text reveal e sublinhado -->
-      <h1 class="hero-title" id="hero-title">
-        <div class="hero-line hero-line-1">
-          <span class="w">Você</span> <span class="w">já</span> <span class="w">vende.</span>
-        </div>
-        <div class="hero-line hero-line-2">
-          <span class="w">Agora</span> <span class="underline-trigger"><span class="w">sua</span> <span class="w">cidade</span> <span class="w">inteira</span><span class="underline-line"></span></span> <span class="w">vai</span> <span class="w">saber</span> <span class="w">e</span> <span class="w">comprar.</span>
-        </div>
+    <!-- ============================================================
+         SEÇÃO 1 — HEADLINE DIRETA
+         ============================================================ -->
+    <section class="sec-headline">
+      <span class="headline-tag">Para quem vende comida em casa</span>
+      <h1 class="headline-main">
+        Como qualquer pessoa da sua cidade pode te encontrar e pedir sua comida — sem você precisar de motoboy, loja ou saber de tecnologia
       </h1>
-
-      <!-- Elemento 4 — Subtítulo -->
-      <p class="hero-sub" id="hero-subtitle">
-        <span>Sem motoboy próprio</span> <span class="bullet">·</span> <span>Sem loja</span> <span class="bullet">·</span> <span>Sem complicação</span>
+      <p class="headline-sub">
+        Um guia simples que já ajudou centenas de vendedoras a receber pedidos pela internet ainda na primeira semana
       </p>
+      <hr class="red-separator">
+    </section>
 
-      <!-- Elemento 5 — Frase de apoio -->
-      <p class="hero-support" id="hero-support">
-        O guia completo pra quem já vende comida em casa e quer chegar em muito mais gente — sem precisar de nada que você ainda não tem.
+    <!-- ============================================================
+         SEÇÃO 2 — IDENTIFICAÇÃO IMEDIATA
+         ============================================================ -->
+    <section style="margin-bottom: 40px;">
+      <p>Se você faz marmita, bolo, doce, salgado, açaí ou qualquer comida boa em casa...</p>
+      <p>...e ainda depende só das pessoas que já te conhecem para vender...</p>
+      <p>...essa pode ser a página mais importante que você vai ler hoje.</p>
+    </section>
+
+    <!-- ============================================================
+         SEÇÃO 3 — A HISTÓRIA
+         ============================================================ -->
+    <section style="margin-bottom: 40px;">
+      <p>Deixa eu te contar algo que a maioria das vendedoras caseiras não sabe.</p>
+      <p>Agora mesmo tem gente na sua cidade abrindo o celular, procurando exatamente o que você faz — marmita, bolo, doce, salgado — e pedindo de outra pessoa.</p>
+      <p>Não porque o produto dela é melhor que o seu. Porque ela aparece e você não.</p>
+      <p>A diferença entre vocês duas não é o produto. É que ela está nos apps de delivery e você ainda não está.</p>
+      <p><span class="highlight-yellow">E entrar nos apps é mais simples do que criar uma conta no Instagram.</span></p>
+    </section>
+
+    <!-- ============================================================
+         SEÇÃO 4 — PROVA
+         ============================================================ -->
+    <section class="single-testimonial">
+      <p>
+        "Achei que era complicado demais pra mim. Nunca tinha mexido em nada assim. Segui o guia passo a passo e em dois dias minha loja já tava no ar. Na primeira semana recebi 11 pedidos de gente que eu nunca tinha visto na vida."
       </p>
+      <span class="testimonial-author">— Marcia Oliveira, Goiânia/GO · vende marmita há 3 anos</span>
+    </section>
 
-
-
-      <!-- Elemento 7 — Indicador de scroll -->
-      <div class="hero-scroll" id="hero-scroll-indicator" aria-hidden="true">
-        <span class="scroll-text">role para baixo</span>
-        <div class="scroll-chevrons">
-          <span class="chevron-up"><i data-lucide="chevron-down"></i></span>
-          <span class="chevron-down"><i data-lucide="chevron-down"></i></span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================================================
-       SECTION 2 — MARQUEE
-       ============================================================ -->
-  <section id="marquee" aria-hidden="true">
-    <div class="marquee-track" id="marquee-track">
-      <span>Sem motoboy próprio<i class="dot"></i></span>
-      <span>Sem loja<i class="dot"></i></span>
-      <span>Sem complicação<i class="dot"></i></span>
-      <span>4 volumes completos<i class="dot"></i></span>
-      <span>7 bônus inclusos<i class="dot"></i></span>
-      <span>Passo a passo do zero<i class="dot"></i></span>
-      <span>Do cadastro ao primeiro pedido<i class="dot"></i></span>
-    </div>
-  </section>
-
-  <!-- ============================================================
-       SECTION 2 — A DOR NOMEADA
-       ============================================================ -->
-  <section id="dor" data-screen-label="02 Dor Nomeada">
-    <div class="wrap">
-      <!-- Elemento 1 — Linha de entrada discreta -->
-      <div class="dor-intro">VOCÊ RECONHECE ISSO?</div>
-
-      <!-- Elemento 2 — Bloco de espelho em 3 partes -->
-      <div class="dor-block">
-        <p class="dor-p1">Você faz com carinho. Capricha em cada detalhe. E quem prova, ama e volta.</p>
-        <p class="dor-p2">Mas tem dias que o celular não toca. O movimento cai. E você fica esperando — sem saber direito o que fazer pra mudar isso.</p>
-        <p class="dor-p3">Não é falta de talento. Não é falta de dedicação. É que do jeito que você vende hoje, <span class="highlight-text">só chega quem já te conhece.<span class="highlight-bg"></span></span></p>
-      </div>
-
-      <!-- Elemento 3 — Separador visual -->
-      <div class="dor-separator"></div>
-
-      <!-- Elemento 4 — A virada da dor -->
-      <div class="dor-turn">
-        <div class="dor-icon">
-          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="24" cy="24" r="20" stroke="#EA1D2C" stroke-width="3"/>
-            <line x1="12" y1="24" x2="36" y2="24" stroke="#EA1D2C" stroke-width="3" stroke-linecap="round"/>
-          </svg>
-        </div>
-        <h3 class="dor-turn-title">E isso tem limite.</h3>
-      </div>
-
-      <!-- Elemento 5 — A pergunta que abre a próxima seção -->
-      <p class="dor-question">Mas e se qualquer pessoa da sua cidade pudesse te encontrar quando quisesse pedir?</p>
-    </div>
-  </section>
-
-  <!-- ============================================================
-       SECTION 3 — A VIRADA
-       ============================================================ -->
-  <section id="virada" data-screen-label="03 A Virada">
-    <!-- Ondas decorativas de transição bege do topo -->
-    <div class="virada-wave" aria-hidden="true">
-      <svg viewBox="0 0 1440 80" preserveAspectRatio="none" fill="#FEF3C7" xmlns="http://www.w3.org/2000/svg">
-        <path d="M0,0 C320,60 420,10 720,40 C1020,70 1120,20 1440,0 L1440,80 L0,80 Z"></path>
-      </svg>
-    </div>
-
-    <div class="wrap">
-      <!-- Elemento 1 — Label de abertura -->
-      <div class="virada-label">A SOLUÇÃO É MAIS SIMPLES DO QUE PARECE</div>
-
-      <!-- Elemento 2 — Título da virada -->
-      <h2 class="virada-title">
-        Existe uma forma de <span class="highlight-yellow">qualquer pessoa da sua cidade<span class="highlight-bg-yellow"></span></span> te encontrar e pedir.
-      </h2>
-
-      <!-- Elemento 3 — Ilustração animada do modelo (Card central) -->
-      <div class="virada-card">
-        <div class="flow-steps">
-          
-          <div class="flow-step">
-            <div class="flow-icon">🏠</div>
-            <p>Você faz em casa</p>
-          </div>
-          
-          <div class="flow-arrow" aria-hidden="true">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M12 4V20M12 20L6 14M12 20L18 14" stroke="#EA1D2C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </div>
-
-          <div class="flow-step">
-            <div class="flow-icon">📱</div>
-            <p>Cliente pede pelo app</p>
-          </div>
-
-          <div class="flow-arrow" aria-hidden="true">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M12 4V20M12 20L6 14M12 20L18 14" stroke="#EA1D2C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </div>
-
-          <div class="flow-step">
-            <div class="flow-icon">🛵</div>
-            <p>Motoboy busca na sua porta</p>
-          </div>
-
-          <div class="flow-arrow" aria-hidden="true">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M12 4V20M12 20L6 14M12 20L18 14" stroke="#EA1D2C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </div>
-
-          <div class="flow-step">
-            <div class="flow-icon">😊</div>
-            <p>Cliente recebe — você não sai da cozinha</p>
-          </div>
-
-        </div>
-
-        <div class="virada-card-divider"></div>
-        <p class="virada-card-footer">
-          "Você não precisa sair de casa. Não precisa de motoboy próprio. Não precisa de loja."
-        </p>
-      </div>
-
-      <!-- Elemento 4 — Os 3 mitos destruídos -->
-      <div class="virada-mitos">
-        
-        <div class="mito-card">
-          <div class="mito-icon">❌</div>
-          <div class="mito-content">
-            <h4>Não precisa de CNPJ pra começar</h4>
-            <p>Muitas plataformas aceitam CPF. Você começa agora.</p>
-          </div>
-        </div>
-
-        <div class="mito-card">
-          <div class="mito-icon">❌</div>
-          <div class="mito-content">
-            <h4>Não precisa de motoboy próprio</h4>
-            <p>O motoboy já está na plataforma. Ele vai até você.</p>
-          </div>
-        </div>
-
-        <div class="mito-card">
-          <div class="mito-icon">❌</div>
-          <div class="mito-content">
-            <h4>Não precisa entender de tecnologia</h4>
-            <p>Se você usa WhatsApp, você consegue fazer isso.</p>
-          </div>
-        </div>
-
-      </div>
-
-      <!-- Elemento 5 — Frase de impacto central -->
-      <div class="virada-impact">
-        <h3>"Você já tem o produto. Já tem clientes. O que falta é a cidade inteira te encontrar."</h3>
-        <p>E isso a gente resolve <strong class="partner-text">juntas.</strong></p>
-      </div>
-
-      <!-- Elemento 6 — Prova de simplicidade -->
-      <p class="virada-proof">
-        ⏱ A maioria das vendedoras que seguiu esse guia fez o cadastro no mesmo dia.
-      </p>
-
-      <!-- Elemento 7 — Micro CTA de transição -->
-      <div class="virada-micro-cta">
-        <a href="#volumes" class="micro-cta-link">Ver o que está dentro do guia ↓<span class="micro-cta-underline"></span></a>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ============================================================
-       SECTION 4 — PROVA DE QUE É PRA ELA
-       ============================================================ -->
-  <section id="prova" data-screen-label="04 Prova Social">
-    <!-- Ondas decorativas de transição branca do topo -->
-    <div class="prova-wave" aria-hidden="true">
-      <svg viewBox="0 0 1440 80" preserveAspectRatio="none" fill="#FFFFFF">
-        <path d="M0,0 C320,60 420,10 720,40 C1020,70 1120,20 1440,0 L1440,80 L0,80 Z"></path>
-      </svg>
-    </div>
-
-    <div class="wrap">
-      <!-- Elemento 1 — Label de abertura -->
-      <div class="prova-label">QUEM JÁ ESTÁ LÁ</div>
-
-      <!-- Elemento 2 — Título -->
-      <h2 class="prova-title">Mulheres como você que já deram esse passo</h2>
-      <p class="prova-sub">Marmita, bolo, doce, salgado, açaí — todo tipo de comida feita em casa.</p>
-
-      <!-- Elemento 3 — Mosaico de fotos reais (Grid 2x3) -->
-      <div class="prova-grid">
-        
-        <div class="prova-card-img line-1">
-          <img src="assets/proof-1.png" alt="Cris M. - Caixa de Brigadeiros">
-          <div class="prova-card-overlay">
-            <div class="prova-card-meta">
-              <span class="prova-card-stars">⭐⭐⭐⭐⭐</span>
-              <span class="prova-card-name">Cris M. · Belém/PA</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="prova-card-img line-1">
-          <img src="assets/proof-2.png" alt="Ana P. - Marmita Caprichada">
-          <div class="prova-card-overlay">
-            <div class="prova-card-meta">
-              <span class="prova-card-stars">⭐⭐⭐⭐⭐</span>
-              <span class="prova-card-name">Ana P. · Fortaleza/CE</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="prova-card-img line-2">
-          <img src="assets/proof-3.png" alt="Ju S. - Bolo de Andar">
-          <div class="prova-card-overlay">
-            <div class="prova-card-meta">
-              <span class="prova-card-stars">⭐⭐⭐⭐⭐</span>
-              <span class="prova-card-name">Ju S. · Goiânia/GO</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="prova-card-img line-2">
-          <img src="assets/proof-4.png" alt="Fátima R. - Salgados Assados">
-          <div class="prova-card-overlay">
-            <div class="prova-card-meta">
-              <span class="prova-card-stars">⭐⭐⭐⭐⭐</span>
-              <span class="prova-card-name">Fátima R. · Recife/PE</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="prova-card-img line-3">
-          <img src="assets/proof-5.png" alt="Lena B. - Açaí no Copo">
-          <div class="prova-card-overlay">
-            <div class="prova-card-meta">
-              <span class="prova-card-stars">⭐⭐⭐⭐⭐</span>
-              <span class="prova-card-name">Lena B. · Manaus/AM</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="prova-card-img line-3">
-          <img src="assets/proof-6.png" alt="Carol T. - Salada no Pote">
-          <div class="prova-card-overlay">
-            <div class="prova-card-meta">
-              <span class="prova-card-stars">⭐⭐⭐⭐⭐</span>
-              <span class="prova-card-name">Carol T. · São Luís/MA</span>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-      <!-- Elemento 4 — Counter animado -->
-      <div class="prova-counter-card">
-        <div class="prova-counter-col">
-          <div class="prova-counter-num" id="proof-num-alunas" data-target="847">0</div>
-          <p class="prova-counter-label">vendedoras já cadastradas</p>
-        </div>
-        <div class="prova-counter-divider"></div>
-        <div class="prova-counter-col">
-          <div class="prova-counter-num" id="proof-num-estados" data-target="12">0</div>
-          <p class="prova-counter-label">estados do Brasil</p>
-        </div>
-      </div>
-
-      <!-- Elemento 5 — Depoimento rápido em destaque -->
-      <div class="prova-depo-card">
-        <div class="prova-quote-bg">“</div>
-        <p class="prova-depo-text">
-          "Achei que era complicado demais pra mim. Nunca tinha mexido em nada assim. Segui o guia passo a passo e em dois dias minha loja já tava no ar. Na primeira semana recebi 11 pedidos de gente que eu nunca tinha visto na vida."
-        </p>
-        <div class="prova-depo-divider"></div>
-        <div class="prova-depo-profile">
-          <h4 class="profile-name">Marcia Oliveira · Goiânia/GO</h4>
-          <p class="profile-desc">Vende marmita há 3 anos</p>
-          <div class="profile-stars">⭐⭐⭐⭐⭐</div>
-        </div>
-      </div>
-
-      <!-- Elemento 6 — Linha de reforço -->
-      <p class="prova-reinforce">
-        "Elas não tinham experiência. Não tinham estrutura. Tinham só o produto e a vontade de crescer."
-      </p>
-
-      <!-- Elemento 7 — Micro CTA de transição -->
-      <div class="prova-micro-cta">
-        <a href="#volumes" class="micro-cta-link">Ver o que você vai aprender ↓<span class="micro-cta-underline"></span></a>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ============================================================
-       SECTION 3 — IDENTIFICAÇÃO
-       ============================================================ -->
-  <section id="ident" data-screen-label="03 Identificação">
-    <div class="wrap">
-      <h2 class="sec-title reveal">Esse guia foi feito pra você que…</h2>
-      <ul class="check-list">
-        <li class="check-item reveal-l"><span class="ico"><i data-lucide="check"></i></span><p>Já faz e vende comida em casa</p></li>
-        <li class="check-item reveal-l"><span class="ico"><i data-lucide="check"></i></span><p>Vende só no boca a boca ou pelo WhatsApp</p></li>
-        <li class="check-item reveal-l"><span class="ico"><i data-lucide="check"></i></span><p>Quer mais clientes sem depender só de indicação</p></li>
-        <li class="check-item reveal-l"><span class="ico"><i data-lucide="check"></i></span><p>Nunca se cadastrou nos apps por achar complicado</p></li>
-        <li class="check-item reveal-l"><span class="ico"><i data-lucide="check"></i></span><p>Quer crescer sem precisar de loja ou funcionário</p></li>
+    <!-- ============================================================
+         SEÇÃO 5 — O QUE É O GUIA
+         ============================================================ -->
+    <section style="margin-bottom: 40px;">
+      <h2 class="sec-title">O que você vai aprender</h2>
+      <ul class="simple-list">
+        <li>— Como funciona um app de delivery e por que é mais fácil do que parece</li>
+        <li>— Como escolher a plataforma certa para o que você vende</li>
+        <li>— Como fazer o cadastro do zero, tela por tela, sem erro</li>
+        <li>— Como montar seu cardápio para atrair clientes</li>
+        <li>— Como tirar foto boa do seu produto com o celular que você já tem</li>
+        <li>— Como cobrar o preço certo sem trabalhar no prejuízo</li>
+        <li>— Como receber os primeiros pedidos e crescer de forma organizada</li>
       </ul>
-    </div>
-  </section>
+      <p style="font-style: italic;">"São 4 volumes completos. Cada um é um passo. Cada passo é mais simples do que parece."</p>
+    </section>
+
+    <!-- ============================================================
+         SEÇÃO 6 — PRIMEIRO CTA
+         ============================================================ -->
+    <section class="cta-box" id="cta-box-1">
+      <p class="cta-price-main">Acesso imediato por apenas R$19,90</p>
+      <p class="cta-price-sub">Ou leve tudo — os 4 volumes + 7 bônus exclusivos — por R$34,90</p>
+      <a href="#" data-checkout="completo" class="btn-white">Quero o Guia Completo →</a>
+      <br>
+      <a href="#" data-checkout="simples" class="btn-outline-white">Ver só o Pacote Simples por R$19,90</a>
+      <span class="cta-footer-text">7 dias de garantia · Acesso imediato · Sem frete</span>
+    </section>
+
+    <!-- ============================================================
+         SEÇÃO 7 — QUEBRANDO OBJEÇÕES
+         ============================================================ -->
+    <section style="margin-bottom: 40px;">
+      <h2 class="sec-title">Antes que você pense...</h2>
+      
+      <div class="faq-block">
+        <span class="faq-question">"Preciso de CNPJ?"</span>
+        <p class="faq-answer">Não. Muitas plataformas aceitam CPF para começar. O guia explica tudo.</p>
+      </div>
+
+      <div class="faq-block">
+        <span class="faq-question">"E se eu não entender de tecnologia?"</span>
+        <p class="faq-answer">Se você usa WhatsApp, você consegue. O guia foi escrito para quem nunca fez isso antes.</p>
+      </div>
+
+      <div class="faq-block">
+        <span class="faq-question">"Tem delivery na minha cidade?"</span>
+        <p class="faq-answer">A maioria das cidades brasileiras tem cobertura. O guia ensina como verificar antes de se cadastrar.</p>
+      </div>
+
+      <div class="faq-block">
+        <span class="faq-question">"E se não funcionar pra mim?"</span>
+        <p class="faq-answer">7 dias de garantia total. Se não gostar, devolvemos 100% sem perguntas.</p>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SEÇÃO 8 — MAIS PROVA SOCIAL
+         ============================================================ -->
+    <section class="testimonials-row">
+      <div class="testimonial-item">
+        <p>"Meu maior medo era a burocracia do cadastro. O guia desmontou isso logo no começo. Hoje tenho clientes fixos que pedem toda semana."</p>
+        <span class="testimonial-author">— Fernanda Souza, Campinas/SP</span>
+      </div>
+      <div class="testimonial-item">
+        <p>"Corrigi meus preços com o guia e minha nota no app subiu de 4.1 pra 4.8 em menos de um mês. Minha renda dobrou."</p>
+        <span class="testimonial-author">— Rosangela Ferreira, Belém/PA</span>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SEÇÃO 9 — OS BÔNUS
+         ============================================================ -->
+    <section style="margin-bottom: 40px;">
+      <h2 class="sec-title">No Pacote Completo você ainda leva:</h2>
+      <ul class="simple-list">
+        <li>— Checklist de Lançamento <em>(para não esquecer nada antes de abrir)</em></li>
+        <li>— Kit de Descrições e Mensagens Prontas <em>(copiar, colar e vender)</em></li>
+        <li>— Planner Semanal da Vendedora <em>(organizar semana e produção)</em></li>
+        <li>— Guia de Fotografia de Alimentos <em>(fotos bonitas com o celular)</em></li>
+        <li>— Guia de Avaliações <em>(como conseguir mais estrelas)</em></li>
+        <li>— Calculadora de Preço <em>(nunca mais cobrar barato demais)</em></li>
+        <li>— Guia de Embalagens <em>(a embalagem certa para cada produto)</em></li>
+      </ul>
+      <p style="color: #EA1D2C; font-weight: 700;">Tudo por R$34,90. Ou só os 4 volumes por R$19,90.</p>
+    </section>
+
+    <!-- ============================================================
+         SEÇÃO 10 — GARANTIA
+         ============================================================ -->
+    <section style="margin-bottom: 40px;">
+      <h2 class="sec-title">Você não tem nada a perder</h2>
+      <p>Se você abrir o guia, ler qualquer coisa, e sentir que não era o que esperava — é só nos avisar em até 7 dias. Devolvemos 100% do seu dinheiro. Sem burocracia. Sem perguntas. Sem precisar explicar nada.</p>
+      <p><em>Você decide depois de ver. Não antes.</em></p>
+    </section>
+
+    <!-- ============================================================
+         SEÇÃO 11 — CTA FINAL
+         ============================================================ -->
+    <section class="cta-box cta-box-large" id="cta-box-2">
+      <p class="cta-price-main" style="font-size: 28px;">Sua cidade está esperando.</p>
+      <p class="cta-price-sub" style="font-size: 18px; margin-bottom: 24px;">Comece hoje por R$19,90 — ou leve tudo por R$34,90</p>
+      <a href="#" data-checkout="completo" class="btn-white btn-pulse">Quero Começar Agora →</a>
+      <span class="cta-footer-text">Acesso imediato após o pagamento · 7 dias de garantia</span>
+    </section>
+
+  </main>
 
   <!-- ============================================================
-       SECTION 5 — OS 4 VOLUMES (JORNADA EM 4 PASSOS)
+       RODAPÉ
        ============================================================ -->
-  <section id="volumes" data-screen-label="04 Volumes">
-    <div class="wrap">
-      <!-- Elemento 1 — Label de abertura -->
-      <div class="volumes-label">SUA JORNADA EM 4 PASSOS</div>
-
-      <!-- Elemento 2 — Título -->
-      <h2 class="volumes-title">A gente vai junto do zero até o seu primeiro pedido</h2>
-      <p class="volumes-sub">Cada volume é um passo. Cada passo é mais simples do que parece.</p>
-
-      <!-- Elemento 3 — Trilha dos 4 volumes (Timeline) -->
-      <div class="volumes-timeline-container">
-        
-        <!-- Trilha central pontilhada -->
-        <div class="volumes-timeline-line" aria-hidden="true"></div>
-
-        <!-- Card Passo 1 (Esquerda) -->
-        <div class="vol-card-step step-left" style="--vol-color: #EA1D2C;">
-          <div class="vol-card-content">
-            <span class="vol-step-badge" style="color: #EA1D2C;">PASSO 1</span>
-            <h3 class="vol-card-name">Vol. 1 — Como dar o primeiro passo</h3>
-            <ul class="vol-card-bullets">
-              <li><i data-lucide="check"></i>Você já tem tudo que precisa para começar</li>
-              <li><i data-lucide="check"></i>Por que vender só pra quem te conhece tem limite</li>
-              <li><i data-lucide="check"></i>Sua cidade está esperando por você</li>
-            </ul>
-            <p class="vol-card-quote" style="color: #EA1D2C;">"O primeiro passo é acreditar que é pra você."</p>
-          </div>
-          <div class="vol-card-mockup">
-            <img src="assets/covers/vol-1.jpg" alt="Vol. 1 — Como dar o primeiro passo">
-          </div>
-        </div>
-
-        <!-- Conector animado 1→2 -->
-        <div class="timeline-connector c-1" style="--c-delay: 0.35s;"></div>
-
-        <!-- Card Passo 2 (Direita) -->
-        <div class="vol-card-step step-right" style="--vol-color: #1D4ED8;">
-          <div class="vol-card-content">
-            <span class="vol-step-badge" style="color: #1D4ED8;">PASSO 2</span>
-            <h3 class="vol-card-name">Vol. 2 — Como se cadastrar nos apps</h3>
-            <ul class="vol-card-bullets">
-              <li><i data-lucide="check"></i>Como funciona uma plataforma de delivery na prática</li>
-              <li><i data-lucide="check"></i>Qual plataforma escolher para o que você vende</li>
-              <li><i data-lucide="check"></i>Cadastro passo a passo do zero, tela por tela</li>
-            </ul>
-            <p class="vol-card-quote" style="color: #1D4ED8;">"Você vai ver que é mais simples do que parece."</p>
-          </div>
-          <div class="vol-card-mockup">
-            <img src="assets/covers/vol-2.jpg" alt="Vol. 2 — Como se cadastrar nos apps">
-          </div>
-        </div>
-
-        <!-- Conector animado 2→3 -->
-        <div class="timeline-connector c-2" style="--c-delay: 0.55s;"></div>
-
-        <!-- Card Passo 3 (Esquerda) -->
-        <div class="vol-card-step step-left" style="--vol-color: #065F46;">
-          <div class="vol-card-content">
-            <span class="vol-step-badge" style="color: #065F46;">PASSO 3</span>
-            <h3 class="vol-card-name">Vol. 3 — Como montar seu cardápio e cobrar certo</h3>
-            <ul class="vol-card-bullets">
-              <li><i data-lucide="check"></i>Como montar um cardápio que atrai clientes</li>
-              <li><i data-lucide="check"></i>Como tirar fotos bonitas com o celular que você já tem</li>
-              <li><i data-lucide="check"></i>Como cobrar o preço certo sem trabalhar no prejuízo</li>
-            </ul>
-            <p class="vol-card-quote" style="color: #065F46;">"Sua vitrine é a primeira impressão. A gente capricha juntas."</p>
-          </div>
-          <div class="vol-card-mockup">
-            <img src="assets/covers/vol-3.jpg" alt="Vol. 3 — Como montar seu cardápio e cobrar certo">
-          </div>
-        </div>
-
-        <!-- Conector animado 3→4 -->
-        <div class="timeline-connector c-3" style="--c-delay: 0.75s;"></div>
-
-        <!-- Card Passo 4 (Direita) -->
-        <div class="vol-card-step step-right" style="--vol-color: #4C1D95;">
-          <div class="vol-card-content">
-            <span class="vol-step-badge" style="color: #4C1D95;">PASSO 4</span>
-            <h3 class="vol-card-name">Vol. 4 — Como receber e crescer</h3>
-            <ul class="vol-card-bullets">
-              <li><i data-lucide="check"></i>Como se preparar para receber pedidos sem estresse</li>
-              <li><i data-lucide="check"></i>Embalagem que encanta e faz o cliente pedir de novo</li>
-              <li><i data-lucide="check"></i>Como crescer de forma organizada e sustentável</li>
-            </ul>
-            <p class="vol-card-quote" style="color: #4C1D95;">"O primeiro pedido muda tudo. E ele está mais perto do que você imagina."</p>
-          </div>
-          <div class="vol-card-mockup">
-            <img src="assets/covers/vol-4.jpg" alt="Vol. 4 — Como receber e crescer">
-          </div>
-        </div>
-
-      </div>
-
-      <!-- Elemento 4 — Barra de progresso visual -->
-      <div class="volumes-progress-container">
-        <div class="volumes-progress-bar-bg">
-          <div class="volumes-progress-bar-fill"></div>
-          <div class="progress-dot dot-1" style="--d-delay: 1.05s;"></div>
-          <div class="progress-dot dot-2" style="--d-delay: 1.125s;"></div>
-          <div class="progress-dot dot-3" style="--d-delay: 1.2s;"></div>
-          <div class="progress-dot dot-4" style="--d-delay: 1.275s;"></div>
-        </div>
-        <p class="volumes-progress-label">Do primeiro passo até estar vendendo para toda a cidade.</p>
-      </div>
-
-      <!-- Elemento 5 — Card de reassurance -->
-      <div class="volumes-reassurance-card">
-        <div class="reassurance-heart">❤️</div>
-        <p class="reassurance-text">
-          "Cada volume foi escrito do jeito mais simples possível. Sem palavras difíceis. Sem enrolação. Feito pra quem nunca fez isso antes."
-        </p>
-      </div>
-
-      <!-- Elemento 6 — Micro CTA de transição -->
-      <div class="volumes-micro-cta">
-        <a href="#bonus" class="micro-cta-link">Ver os bônus exclusivos ↓<span class="micro-cta-underline"></span></a>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ============================================================
-       SECTION 5 — BÔNUS
-       ============================================================ -->
-  <section id="bonus" class="noise" data-screen-label="08 Bônus">
-    <!-- Confetes decorativos sutis a 4% opacidade -->
-    <div class="bonus-decorations" aria-hidden="true">
-      <div class="confetti c1"></div>
-      <div class="confetti c2"></div>
-      <div class="confetti c3"></div>
-      <div class="confetti c4"></div>
-    </div>
-
-    <div class="wrap">
-      <!-- Elemento 1 — Label de abertura -->
-      <div class="bonus-label">SÓ NO PACOTE COMPLETO</div>
-
-      <!-- Elemento 2 — Título -->
-      <h2 class="bonus-title">7 bônus que aceleram tudo</h2>
-      <p class="bonus-sub">Cada bônus resolve uma parte do caminho que muita gente trava.</p>
-
-      <!-- Elemento 3 — Counter de valor total -->
-      <div class="bonus-value-counter">
-        <div class="val-col left">
-          <span class="val-lbl">Valor total dos bônus</span>
-          <span class="val-price-old">R$97,40</span>
-        </div>
-        <div class="val-col-divider"></div>
-        <div class="val-col right">
-          <span class="val-lbl">No Pacote Completo</span>
-          <span class="val-price-free">GRÁTIS</span>
-        </div>
-      </div>
-
-      <!-- Elemento 4 — Grid de cards dos bônus -->
-      <div class="bonus-grid-list">
-        
-        <!-- Card 1 -->
-        <div class="bonus-card-wrapper">
-          <div class="bonus-card-inner">
-            <div class="bonus-card-front">
-              <div class="bc-left">
-                <span class="bc-num">BÔNUS 01</span>
-                <div class="bc-icon-circle">🚀</div>
-              </div>
-              <div class="bc-center">
-                <h3 class="bc-name">Checklist de Lançamento</h3>
-                <p class="bc-problem">Para quem tem medo de esquecer algo importante antes de abrir</p>
-              </div>
-              <div class="bc-right">
-                <span class="bc-arrow">→</span>
-              </div>
-            </div>
-            <div class="bonus-card-back">
-              <div>
-                <h3 class="bc-name-back">Checklist de Lançamento</h3>
-                <p class="bc-desc-back">Uma lista completa de tudo que você precisa conferir antes de ativar sua loja. Do cadastro à primeira foto — nada passa despercebido.</p>
-              </div>
-              <button class="btn-bc-understand" type="button">Entendi ✓</button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Card 2 -->
-        <div class="bonus-card-wrapper">
-          <div class="bonus-card-inner">
-            <div class="bonus-card-front">
-              <div class="bc-left">
-                <span class="bc-num">BÔNUS 02</span>
-                <div class="bc-icon-circle">💬</div>
-              </div>
-              <div class="bc-center">
-                <h3 class="bc-name">Kit de Descrições e Mensagens</h3>
-                <p class="bc-problem">Para quem trava na hora de escrever o cardápio ou divulgar no WhatsApp</p>
-              </div>
-              <div class="bc-right">
-                <span class="bc-arrow">→</span>
-              </div>
-            </div>
-            <div class="bonus-card-back">
-              <div>
-                <h3 class="bc-name-back">Kit de Descrições e Mensagens</h3>
-                <p class="bc-desc-back">Textos prontos para descrever seus produtos no app e mensagens prontas para mandar no WhatsApp. É só copiar, colar e vender.</p>
-              </div>
-              <button class="btn-bc-understand" type="button">Entendi ✓</button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Card 3 -->
-        <div class="bonus-card-wrapper">
-          <div class="bonus-card-inner">
-            <div class="bonus-card-front">
-              <div class="bc-left">
-                <span class="bc-num">BÔNUS 03</span>
-                <div class="bc-icon-circle">📅</div>
-              </div>
-              <div class="bc-center">
-                <h3 class="bc-name">Planner Semanal da Vendedora</h3>
-                <p class="bc-problem">Para quem mistura a rotina da casa com a rotina das vendas e acaba se perdendo</p>
-              </div>
-              <div class="bc-right">
-                <span class="bc-arrow">→</span>
-              </div>
-            </div>
-            <div class="bonus-card-back">
-              <div>
-                <h3 class="bc-name-back">Planner Semanal da Vendedora</h3>
-                <p class="bc-desc-back">Uma agenda semanal feita pra quem vende comida em casa. Organiza pedidos, compras, produção e lucro — tudo num lugar só.</p>
-              </div>
-              <button class="btn-bc-understand" type="button">Entendi ✓</button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Card 4 -->
-        <div class="bonus-card-wrapper">
-          <div class="bonus-card-inner">
-            <div class="bonus-card-front">
-              <div class="bc-left">
-                <span class="bc-num">BÔNUS 04</span>
-                <div class="bc-icon-circle">📸</div>
-              </div>
-              <div class="bc-center">
-                <h3 class="bc-name">Guia de Fotografia de Alimentos</h3>
-                <p class="bc-problem">Para quem acha que foto boa precisa de câmera cara</p>
-              </div>
-              <div class="bc-right">
-                <span class="bc-arrow">→</span>
-              </div>
-            </div>
-            <div class="bonus-card-back">
-              <div>
-                <h3 class="bc-name-back">Guia de Fotografia de Alimentos</h3>
-                <p class="bc-desc-back">Com luz natural, fundo simples e o celular que você já tem dá pra tirar foto que dá água na boca. O guia ensina tudo isso em poucos passos.</p>
-              </div>
-              <button class="btn-bc-understand" type="button">Entendi ✓</button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Card 5 -->
-        <div class="bonus-card-wrapper">
-          <div class="bonus-card-inner">
-            <div class="bonus-card-front">
-              <div class="bc-left">
-                <span class="bc-num">BÔNUS 05</span>
-                <div class="bc-icon-circle">⭐</div>
-              </div>
-              <div class="bc-center">
-                <h3 class="bc-name">Guia de Avaliações</h3>
-                <p class="bc-problem">Para quem não sabe como pedir avaliação sem constranger o cliente</p>
-              </div>
-              <div class="bc-right">
-                <span class="bc-arrow">→</span>
-              </div>
-            </div>
-            <div class="bonus-card-back">
-              <div>
-                <h3 class="bc-name-back">Guia de Avaliações</h3>
-                <p class="bc-desc-back">Como conseguir mais estrelas, como pedir avaliação do jeito certo e como responder quando a nota não foi boa. Avaliação alta = app te mostra pra mais gente.</p>
-              </div>
-              <button class="btn-bc-understand" type="button">Entendi ✓</button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Card 6 -->
-        <div class="bonus-card-wrapper">
-          <div class="bonus-card-inner">
-            <div class="bonus-card-front">
-              <div class="bc-left">
-                <span class="bc-num">BÔNUS 06</span>
-                <div class="bc-icon-circle">🧮</div>
-              </div>
-              <div class="bc-center">
-                <h3 class="bc-name">Calculadora de Preço</h3>
-                <p class="bc-problem">Para quem cobra barato demais e trabalha sem lucro sem perceber</p>
-              </div>
-              <div class="bc-right">
-                <span class="bc-arrow">→</span>
-              </div>
-            </div>
-            <div class="bonus-card-back">
-              <div>
-                <h3 class="bc-name-back">Calculadora de Preço</h3>
-                <p class="bc-desc-back">Uma calculadora simples onde você coloca seus ingredientes, embalagem e tempo — e ela te diz exatamente quanto cobrar. Nunca mais trabalhar no prejuízo.</p>
-              </div>
-              <button class="btn-bc-understand" type="button">Entendi ✓</button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Card 7 -->
-        <div class="bonus-card-wrapper">
-          <div class="bonus-card-inner">
-            <div class="bonus-card-front">
-              <div class="bc-left">
-                <span class="bc-num">BÔNUS 07</span>
-                <div class="bc-icon-circle">📦</div>
-              </div>
-              <div class="bc-center">
-                <h3 class="bc-name">Guia de Embalagens</h3>
-                <p class="bc-problem">Para quem não sabe qual embalagem usar e onde comprar mais barato</p>
-              </div>
-              <div class="bc-right">
-                <span class="bc-arrow">→</span>
-              </div>
-            </div>
-            <div class="bonus-card-back">
-              <div>
-                <h3 class="bc-name-back">Guia de Embalagens</h3>
-                <p class="bc-desc-back">A embalagem certa para cada tipo de produto — marmita, bolo, doce, salgado — com links diretos para comprar. Capricho na embalagem faz o cliente pedir de novo.</p>
-              </div>
-              <button class="btn-bc-understand" type="button">Entendi ✓</button>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-      <!-- Elemento 5 — Linha de reforço de valor -->
-      <div class="bonus-value-reinforce">
-        <p class="reinforce-main">"São 7 materiais feitos para resolver as 7 maiores dúvidas de quem está começando."</p>
-        <p class="reinforce-sub">Cada um deles já valeria o preço do Pacote Completo sozinho.</p>
-      </div>
-
-      <!-- Elemento 6 — CTA de retorno à oferta -->
-      <div class="bonus-cta-container">
-        <a href="#oferta-card-completo" class="btn btn-red btn-pulse" id="btn-bonus-return">Quero o Pacote Completo com todos os bônus →</a>
-        <p class="bonus-cta-note">R$34,90 · Acesso imediato · 7 dias de garantia</p>
-      </div>
-
-    </div>
-  </section>
-
-
-
-  <!-- ============================================================
-       SECTION 6 — PROVA SOCIAL QUENTE (DEPOIMENTOS)
-       ============================================================ -->
-  <!-- ============================================================
-       SECTION 6 — PROVA SOCIAL QUENTE (DEPOIMENTOS)
-       ============================================================ -->
-  <section id="depoimentos" data-screen-label="06 Depoimentos">
-    <!-- Aspas gigantes decorativas com 20% opacidade no topo direito -->
-    <div class="depo-quotes-bg" aria-hidden="true">”</div>
-
-    <div class="container">
-      <!-- Elemento 1 — Label de abertura -->
-      <div class="depo-label">O QUE ESTÃO DIZENDO</div>
-
-      <!-- Elemento 2 — Título -->
-      <h2 class="depo-title">Palavras de quem já deu esse passo</h2>
-      <p class="depo-sub">Mulheres comuns. Produtos caseiros. Resultados reais.</p>
-
-      <!-- Elemento 3 — Grid estático de depoimentos (3 visíveis) -->
-      <div class="depo-grid">
-        
-        <!-- Card 1: Rosangela Ferreira -->
-        <article class="depo-card-static">
-          <div class="depo-card-top">
-            <div class="depo-stars">⭐⭐⭐⭐⭐</div>
-            <span class="depo-badge">Vende marmita e doce</span>
-          </div>
-          <div class="depo-card-body">
-            <span class="depo-quote-mark open">“</span>
-            <p class="depo-text">
-              Comprei achando que já sabia tudo mas o volume 3 me abriu o olho na hora de colocar o preço. Eu tava cobrando barato demais e nem sabia. Corrigi os preços, melhorei as fotos com as dicas do guia e minha nota no app subiu de 4.1 pra 4.8 em menos de um mês. Minha renda desse mês foi o dobro do mês anterior. Obrigada!
-            </p>
-            <span class="depo-quote-mark close">”</span>
-          </div>
-          <div class="depo-card-divider"></div>
-          <div class="depo-card-base">
-            <div class="depo-avatar" style="background-color: #EA1D2C; color: #fff; width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 16px;">R</div>
-            <div class="depo-meta">
-              <h4 class="depo-name">Rosangela Ferreira</h4>
-              <span class="depo-location">
-                📍 Belém/PA
-              </span>
-            </div>
-          </div>
-        </article>
-
-        <!-- Card 2: Fernanda Souza -->
-        <article class="depo-card-static">
-          <div class="depo-card-top">
-            <div class="depo-stars">⭐⭐⭐⭐⭐</div>
-            <span class="depo-badge">Vende bolo e doce</span>
-          </div>
-          <div class="depo-card-body">
-            <span class="depo-quote-mark open">“</span>
-            <p class="depo-text">
-              Meu maior medo era a parte do cadastro, achei que ia ter que resolver um monte de burocracia. O guia desmontou isso logo no começo. É muito mais simples do que parece. Hoje faço bolo, brownie e cookie, tô no app há dois meses e já tenho clientes fixos que pedem toda semana. Recomendo demais pra qualquer mulher que vende comida em casa.
-            </p>
-            <span class="depo-quote-mark close">”</span>
-          </div>
-          <div class="depo-card-divider"></div>
-          <div class="depo-card-base">
-            <div class="depo-avatar" style="background-color: #1D4ED8; color: #fff; width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 16px;">F</div>
-            <div class="depo-meta">
-              <h4 class="depo-name">Fernanda Souza</h4>
-              <span class="depo-location">
-                📍 Campinas/SP
-              </span>
-            </div>
-          </div>
-        </article>
-
-        <!-- Card 3: Marcia Oliveira -->
-        <article class="depo-card-static">
-          <div class="depo-card-top">
-            <div class="depo-stars">⭐⭐⭐⭐⭐</div>
-            <span class="depo-badge">Vende marmita</span>
-          </div>
-          <div class="depo-card-body">
-            <span class="depo-quote-mark open">“</span>
-            <p class="depo-text">
-              Achei que era complicado demais pra mim. Nunca tinha mexido em nada assim. Segui o guia passo a passo e em dois dias minha loja já tava no ar. Na primeira semana recebi 11 pedidos de gente que eu nunca tinha visto na vida.
-            </p>
-            <span class="depo-quote-mark close">”</span>
-          </div>
-          <div class="depo-card-divider"></div>
-          <div class="depo-card-base">
-            <div class="depo-avatar" style="background-color: #065F46; color: #fff; width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 16px;">M</div>
-            <div class="depo-meta">
-              <h4 class="depo-name">Marcia Oliveira</h4>
-              <span class="depo-location">
-                📍 Goiânia/GO
-              </span>
-            </div>
-          </div>
-        </article>
-
-      </div>
-
-      <!-- Elemento 4 — Barra de confiança -->
-      <div class="depo-trust-bar">
-        <div class="depo-trust-col">
-          <div class="depo-trust-val">4.9</div>
-          <div class="depo-trust-lbl">nota média</div>
-          <div class="depo-trust-stars">⭐⭐⭐⭐⭐</div>
-        </div>
-        <div class="depo-trust-divider"></div>
-        <div class="depo-trust-col">
-          <div class="depo-trust-val counter-animate" id="trust-counter-vendedoras" data-target="847">0</div>
-          <div class="depo-trust-lbl">vendedoras</div>
-        </div>
-        <div class="depo-trust-divider"></div>
-        <div class="depo-trust-col">
-          <div class="depo-trust-val">7 dias</div>
-          <div class="depo-trust-lbl">de garantia</div>
-          <div class="depo-trust-badge">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-      <!-- Elemento 5 — Linha de prova de urgência emocional -->
-      <p class="depo-urgency-emotional">
-        "Essas mulheres não tinham experiência. Tinham só o produto e a vontade de ir mais longe."
-      </p>
-
-      <!-- Elemento 6 — Micro CTA de transição -->
-      <div class="depo-micro-cta">
-        <a href="#oferta" class="depo-micro-cta-link">Ver os pacotes disponíveis ↓</a>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ============================================================
-       SECTION 7 — OFERTA
-       ============================================================ -->
-  <section id="oferta" class="noise" data-screen-label="07 Oferta">
-    <!-- Camada de partículas flutuantes sutil (opacidade 5%) -->
-    <div class="oferta-particles" aria-hidden="true">
-      <div class="op-item op-1" style="--p-left: 5%; --p-delay: 0s; --p-dur: 15s;">🍔</div>
-      <div class="op-item op-2" style="--p-left: 25%; --p-delay: 2s; --p-dur: 18s;">🍰</div>
-      <div class="op-item op-3" style="--p-left: 45%; --p-delay: 1s; --p-dur: 16s;">🛵</div>
-      <div class="op-item op-4" style="--p-left: 65%; --p-delay: 3s; --p-dur: 14s;">🥗</div>
-      <div class="op-item op-5" style="--p-left: 85%; --p-delay: 0.5s; --p-dur: 17s;">🎁</div>
-    </div>
-
-    <div class="wrap">
-      <!-- Elemento 1 — Label de abertura -->
-      <div class="oferta-label">ESCOLHA SEU PACOTE</div>
-
-      <!-- Elemento 2 — Título -->
-      <h2 class="oferta-title">Tudo que você precisa para começar hoje</h2>
-      <p class="oferta-sub">Acesso imediato após o pagamento. Sem esperar frete.</p>
-
-      <div class="price-cards">
-
-        <!-- Elemento 3 — Card Pacote Simples -->
-        <article class="price-card simples" id="oferta-card-simples">
-          <div class="pc-header">
-            <h3 class="pc-name">Pacote Simples</h3>
-            <p class="pc-desc">Para quem quer começar agora</p>
-          </div>
-          
-          <ul class="pc-list">
-            <li><span>✓</span> Vol. 1 — Como dar o primeiro passo</li>
-            <li><span>✓</span> Vol. 2 — Como se cadastrar nos apps</li>
-            <li><span>✓</span> Vol. 3 — Como montar seu cardápio e cobrar certo</li>
-            <li><span>✓</span> Vol. 4 — Como receber e crescer</li>
-          </ul>
-
-          <div class="pc-divider"></div>
-
-          <div class="pc-price-block">
-            <span class="pc-old">R$49,90</span>
-            <div class="pc-price-row">
-              <span class="pc-price">R$19,90</span>
-            </div>
-            <p class="pc-note">Ideal para começar · Os 4 volumes completos.</p>
-          </div>
-
-          <a href="#" data-checkout="simples" class="btn btn-outline-red">Quero o Pacote Simples</a>
-          
-          <div class="pc-footer">
-            <span class="pc-guarantee">🔒 7 dias de garantia total</span>
-          </div>
-        </article>
-
-        <!-- Elemento 4 — Separador entre cards -->
-        <div class="oferta-separator">
-          <div class="sep-line left"></div>
-          <span class="sep-text">OU APROVEITE MAIS</span>
-          <div class="sep-line right"></div>
-        </div>
-
-        <!-- Elemento 5 — Card Pacote Completo -->
-        <article class="price-card completo" id="oferta-card-completo">
-          <div class="pc-badge-tag">⭐ Mais Escolhido</div>
-          
-          <div class="pc-header">
-            <h3 class="pc-name">Pacote Completo</h3>
-            <p class="pc-desc">Para quem quer resultados mais rápidos</p>
-          </div>
-
-          <ul class="pc-list">
-            <li class="pc-main-item">✅ <strong>Guia completo em 4 volumes</strong></li>
-            
-            <div class="pc-bonus-title-container">
-              <span class="pc-bonus-title">🎁 7 BÔNUS INCLUSOS:</span>
-            </div>
-            
-            <li class="pc-bonus-item"><span>➕</span> 🚀 Checklist de Lançamento</li>
-            <li class="pc-bonus-item"><span>➕</span> 💬 Kit de Descrições e Mensagens</li>
-            <li class="pc-bonus-item"><span>➕</span> 📅 Planner Semanal da Vendedora</li>
-            <li class="pc-bonus-item"><span>➕</span> 📸 Guia de Fotografia de Alimentos</li>
-            <li class="pc-bonus-item"><span>➕</span> ⭐ Guia de Avaliações</li>
-            <li class="pc-bonus-item"><span>➕</span> 🧮 Calculadora de Preço</li>
-            <li class="pc-bonus-item"><span>➕</span> 📦 Guia de Embalagens</li>
-          </ul>
-
-          <div class="pc-divider"></div>
-
-          <div class="pc-price-block">
-            <div class="pc-savings-pill">
-              <span>💰 Você economiza R$100,00</span>
-            </div>
-            <span class="pc-old" id="completo-price-old">R$134,90</span>
-            <div class="pc-price-row">
-              <span class="pc-price huge" id="completo-price-val-row">R$34,90</span>
-            </div>
-          </div>
-
-          <a href="https://ggcheckout.app/checkout/v5/tYv4BiudM81i95gbyR8y" data-checkout="completo" class="btn btn-red-solid btn-pulse">Quero o Pacote Completo →</a>
-
-          <div class="pc-faixa-bege">
-            <span class="pc-timer">⏱ Oferta válida por tempo limitado</span>
-          </div>
-
-          <div class="pc-footer">
-            <span class="pc-guarantee">🔒 7 dias de garantia total · Acesso imediato</span>
-          </div>
-        </article>
-
-      </div>
-
-      <!-- Elemento 6 — Bandeiras de pagamento -->
-      <div class="oferta-payments">
-        <p class="payments-label">Pagamento 100% seguro</p>
-        <div class="payments-flags">
-          <div class="pay-flag"><img src="assets/visa.png" alt="Visa"></div>
-          <div class="pay-flag"><img src="assets/mastercard.png" alt="Mastercard"></div>
-          <div class="pay-flag"><img src="assets/pix.png" alt="Pix"></div>
-          <div class="pay-flag"><img src="assets/gpay.png" alt="Google Pay"></div>
-          <div class="pay-flag"><img src="assets/applepay.png" alt="Apple Pay"></div>
-        </div>
-      </div>
-
-      <!-- Elemento 7 — Linha de urgência final -->
-      <p class="oferta-urgency-final">Acesso imediato após o pagamento. Sem esperar. Sem frete. Começa hoje.</p>
-
-    </div>
-  </section>
-
-  <!-- ============================================================
-       SECTION 8 — GARANTIA
-       ============================================================ -->
-  <section id="garantia" data-screen-label="09 Garantia">
-    <!-- Ondas decorativas de transição branca do topo -->
-    <div class="garantia-wave" aria-hidden="true">
-      <svg viewBox="0 0 1440 80" preserveAspectRatio="none" fill="#FFFFFF" xmlns="http://www.w3.org/2000/svg">
-        <path d="M0,0 C320,60 420,10 720,40 C1020,70 1120,20 1440,0 L1440,80 L0,80 Z"></path>
-      </svg>
-    </div>
-
-    <div class="wrap">
-      <!-- Elemento 1 — Ícone central animado -->
-      <div class="garantia-shield-container">
-        <div class="garantia-ring" id="garantia-ring"></div>
-        <div class="garantia-shield" id="garantia-shield">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="shield-svg">
-            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-            <polyline points="9 11 11 13 15 9" class="checkmark-path"/>
-          </svg>
-        </div>
-      </div>
-
-      <!-- Elemento 2 — Título -->
-      <h2 class="garantia-title">7 dias de garantia total</h2>
-
-      <!-- Elemento 3 — Corpo da garantia -->
-      <div class="garantia-body">
-        <p class="garantia-p1">Se você abrir o guia, ler qualquer coisa, e sentir que não era o que esperava — é só nos avisar em até 7 dias.</p>
-        <p class="garantia-p2">Devolvemos <span class="highlight-green-text">100% do seu dinheiro<span class="highlight-green-bg"></span></span>. Sem precisar explicar nada. Sem burocracia. Sem perguntas.</p>
-      </div>
-
-      <!-- Elemento 4 — Card de reforço pessoal -->
-      <div class="garantia-reforco-card">
-        <span class="quote-icon">“</span>
-        <p class="reforco-text">"Eu sei que pra muita mulher R$34,90 precisa ser uma decisão pensada. Por isso a garantia existe — pra você poder começar sem medo. Se não valeu, você tem o dinheiro de volta. Simples assim."</p>
-        <div class="reforco-divider"></div>
-      </div>
-
-      <!-- Elemento 5 — Lista de o que a garantia cobre -->
-      <div class="garantia-coverage">
-        <div class="garantia-cover-item">✅ Não gostou por qualquer motivo</div>
-        <div class="garantia-cover-item">✅ Achou mais difícil do que esperava</div>
-        <div class="garantia-cover-item">✅ Mudou de ideia</div>
-        <p class="garantia-no-judgment">"Qualquer um desses motivos é suficiente. Sem julgamento."</p>
-      </div>
-
-      <!-- Elemento 6 — Prazo visual -->
-      <div class="garantia-deadline-pill">
-        <span>📅 7 dias a partir da sua compra</span>
-      </div>
-
-      <!-- Elemento 7 — CTA pós-garantia -->
-      <div class="garantia-cta-container">
-        <a href="#oferta" class="btn btn-red btn-pulse" id="btn-garantia-cta">Quero começar agora →</a>
-        <a href="#oferta" class="garantia-discrete-link" id="link-garantia-discrete">Ver os pacotes disponíveis</a>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ============================================================
-       SECTION 10 — FAQ
-       ============================================================ -->
-  <!-- ============================================================
-       SECTION 10 — FAQ (DÚVIDAS FREQUENTES)
-       ============================================================ -->
-  <section id="faq" class="faq-section" data-screen-label="10 FAQ">
-    <!-- SVG Speech Bubbles Scattered in the Background -->
-    <svg class="faq-bg-bubble bubble-1" viewBox="0 0 200 200" fill="#FEF3C7" opacity="0.08" aria-hidden="true">
-      <path d="M100,20 C55,20 20,47 20,80 C20,99 35,116 60,127 L50,160 L85,142 C90,143 95,144 100,144 C145,144 180,117 180,80 C180,47 145,20 100,20 Z" />
-    </svg>
-    <svg class="faq-bg-bubble bubble-2" viewBox="0 0 200 200" fill="#FEF3C7" opacity="0.08" aria-hidden="true">
-      <path d="M100,20 C55,20 20,47 20,80 C20,99 35,116 60,127 L50,160 L85,142 C90,143 95,144 100,144 C145,144 180,117 180,80 C180,47 145,20 100,20 Z" />
-    </svg>
-    <svg class="faq-bg-bubble bubble-3" viewBox="0 0 200 200" fill="#FEF3C7" opacity="0.08" aria-hidden="true">
-      <path d="M100,20 C55,20 20,47 20,80 C20,99 35,116 60,127 L50,160 L85,142 C90,143 95,144 100,144 C145,144 180,117 180,80 C180,47 145,20 100,20 Z" />
-    </svg>
-
-    <div class="wrap container--narrow">
-      <!-- Elemento 1 — Label de abertura -->
-      <div class="faq-section-label">DÚVIDAS FREQUENTES</div>
-
-      <!-- Elemento 2 — Título -->
-      <h2 class="faq-section-title">Pode perguntar. A gente responde.</h2>
-      <p class="faq-section-sub">As perguntas que todo mundo tem antes de começar.</p>
-
-      <!-- Elemento 3 — Accordion de perguntas (7 itens) -->
-      <div class="faq-accordion">
-        
-        <!-- Item 1 -->
-        <div class="faq-accordion-item" style="--item-index: 0;">
-          <button class="faq-accordion-item__btn" type="button" aria-expanded="false">
-            <span>Preciso ter CNPJ para me cadastrar nos apps?</span>
-            <span class="faq-accordion-item__icon" aria-hidden="true">+</span>
-          </button>
-          <div class="faq-accordion-item__answer">
-            <div class="faq-accordion-item__answer-inner">
-              <div class="faq-accordion-divider"></div>
-              Não necessariamente. Muitas plataformas aceitam CPF para começar, especialmente para vendedores individuais e de pequeno porte. O guia explica os requisitos de cada plataforma de forma simples e direta — sem burocracia.
-            </div>
-          </div>
-        </div>
-
-        <!-- Item 2 -->
-        <div class="faq-accordion-item" style="--item-index: 1;">
-          <button class="faq-accordion-item__btn" type="button" aria-expanded="false">
-            <span>Funciona para doce, bolo, salgado e marmita?</span>
-            <span class="faq-accordion-item__icon" aria-hidden="true">+</span>
-          </button>
-          <div class="faq-accordion-item__answer">
-            <div class="faq-accordion-item__answer-inner">
-              <div class="faq-accordion-divider"></div>
-              Sim! O guia foi feito exatamente para quem vende qualquer tipo de comida em casa — marmita, bolo, doce, salgado, lanche, açaí e muito mais. Não importa o que você faz — se é comida boa feita em casa, funciona.
-            </div>
-          </div>
-        </div>
-
-        <!-- Item 3 -->
-        <div class="faq-accordion-item" style="--item-index: 2;">
-          <button class="faq-accordion-item__btn" type="button" aria-expanded="false">
-            <span>E se eu nunca usei um app de delivery?</span>
-            <span class="faq-accordion-item__icon" aria-hidden="true">+</span>
-          </button>
-          <div class="faq-accordion-item__answer">
-            <div class="faq-accordion-item__answer-inner">
-              <div class="faq-accordion-divider"></div>
-              Esse guia foi feito pra você. Começa do zero e explica tudo passo a passo — do cadastro até o primeiro pedido — sem nenhuma palavra técnica difícil. Se você usa WhatsApp, você consegue seguir.
-            </div>
-          </div>
-        </div>
-
-        <!-- Item 4 -->
-        <div class="faq-accordion-item" style="--item-index: 3;">
-          <button class="faq-accordion-item__btn" type="button" aria-expanded="false">
-            <span>Tem motoboy disponível na minha cidade?</span>
-            <span class="faq-accordion-item__icon" aria-hidden="true">+</span>
-          </button>
-          <div class="faq-accordion-item__answer">
-            <div class="faq-accordion-item__answer-inner">
-              <div class="faq-accordion-divider"></div>
-              As principais plataformas de delivery cobrem a grande maioria das cidades brasileiras — incluindo cidades do interior. O guia ensina como verificar se tem cobertura na sua cidade antes de se cadastrar. É simples e rápido de checar.
-            </div>
-          </div>
-        </div>
-
-        <!-- Item 5 -->
-        <div class="faq-accordion-item" style="--item-index: 4;">
-          <button class="faq-accordion-item__btn" type="button" aria-expanded="false">
-            <span>Como vou receber o material?</span>
-            <span class="faq-accordion-item__icon" aria-hidden="true">+</span>
-          </button>
-          <div class="faq-accordion-item__answer">
-            <div class="faq-accordion-item__answer-inner">
-              <div class="faq-accordion-divider"></div>
-              Imediatamente após o pagamento você recebe um e-mail com o link de acesso. É só clicar, baixar os arquivos e começar a ler — no celular, no computador ou no tablet. Sem esperar. Sem frete. Sem complicação.
-            </div>
-          </div>
-        </div>
-
-        <!-- Item 6 -->
-        <div class="faq-accordion-item" style="--item-index: 5;">
-          <button class="faq-accordion-item__btn" type="button" aria-expanded="false">
-            <span>Quanto tempo vou levar para ver resultado?</span>
-            <span class="faq-accordion-item__icon" aria-hidden="true">+</span>
-          </button>
-          <div class="faq-accordion-item__answer">
-            <div class="faq-accordion-item__answer-inner">
-              <div class="faq-accordion-divider"></div>
-              A maioria das vendedoras que seguiu o guia fez o cadastro no mesmo dia em que terminou de ler o Volume 2. Resultado depende de cada uma — mas o caminho está traçado e é mais rápido do que parece. Tem quem recebeu o primeiro pedido na primeira semana.
-            </div>
-          </div>
-        </div>
-
-        <!-- Item 7 -->
-        <div class="faq-accordion-item" style="--item-index: 6;">
-          <button class="faq-accordion-item__btn" type="button" aria-expanded="false">
-            <span>E se eu não gostar?</span>
-            <span class="faq-accordion-item__icon" aria-hidden="true">+</span>
-          </button>
-          <div class="faq-accordion-item__answer">
-            <div class="faq-accordion-item__answer-inner">
-              <div class="faq-accordion-divider"></div>
-              Você tem 7 dias de garantia total. Se por qualquer motivo sentir que não valeu — é só nos avisar. Devolvemos 100% do seu dinheiro sem burocracia e sem perguntas. <span class="faq-highlight-red">Você não tem nada a perder.</span>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-      <!-- Elemento 5 — Linha de fechamento -->
-      <p class="faq-closing-thought">
-        "Todas as dúvidas respondidas. Agora é só dar o próximo passo."
-      </p>
-    </div>
-  </section>
-
-  <!-- ============================================================
-       SECTION 11 — CTA FINAL
-       ============================================================ -->
-  <section id="cta-final" class="cta-final-section" data-screen-label="11 CTA Final">
-    <!-- Static concentric SVG circles -->
-    <svg class="circles-svg" viewBox="0 0 600 600" fill="none" stroke="#991B1B" stroke-width="1.5" aria-hidden="true">
-      <circle cx="300" cy="300" r="100" />
-      <circle cx="300" cy="300" r="180" />
-      <circle cx="300" cy="300" r="260" />
-      <circle cx="300" cy="300" r="340" />
-    </svg>
-
-    <!-- Floating Food Particles (SVG shapes representing lanches/food) -->
-    <div class="cta-particles-container" aria-hidden="true">
-      <div class="cta-particle p1" style="animation-delay: 0s;">🍔</div>
-      <div class="cta-particle p2" style="animation-delay: 2s;">🍰</div>
-      <div class="cta-particle p3" style="animation-delay: 4s;">🛵</div>
-      <div class="cta-particle p4" style="animation-delay: 6s;">🥗</div>
-      <div class="cta-particle p5" style="animation-delay: 8s;">🎁</div>
-    </div>
-
-    <div class="wrap container--narrow">
-      <!-- Elemento 1 — Frase de espelho final -->
-      <p class="cta-mirror-phrase">"Você chegou até aqui porque isso faz sentido pra você."</p>
-
-      <!-- Elemento 2 — Título com reveal dramático -->
-      <h2 class="cta-final-title">
-        <span class="cta-title-line-1">
-          <span class="cta-word w1">Sua</span>
-          <span class="cta-word w2">cidade</span>
-          <span class="cta-word w3">está</span>
-        </span>
-        <span class="cta-title-line-2">esperando.</span>
-        <span class="cta-title-line-3">
-          Agora é a sua vez.
-          <span class="cta-title-underline"></span>
-        </span>
-      </h2>
-
-      <!-- Elemento 3 — Frase de reforço -->
-      <p class="cta-support-phrase">"Você já faz a parte mais difícil todos os dias. Nós te mostramos o resto."</p>
-
-      <!-- Elemento 4 — Mini resumo do que ela leva -->
-      <div class="cta-summary-card">
-        <h4 class="cta-summary-card__title">Você leva hoje:</h4>
-        <ul class="cta-summary-card__list">
-          <li><span>📖</span> 4 volumes completos do zero ao primeiro pedido</li>
-          <li><span>🎁</span> 7 bônus exclusivos</li>
-          <li><span>⚡</span> Acesso imediato — começa agora</li>
-          <li><span>🔒</span> 7 dias de garantia total</li>
-        </ul>
-      </div>
-
-      <!-- Elemento 5 — Bloco de preço final -->
-      <div class="cta-price-block">
-        <span class="cta-price-label">Por apenas</span>
-        <div class="cta-price-value">R$34,90</div>
-        <span class="cta-price-sub">ou R$19,90 no Pacote Simples</span>
-      </div>
-
-      <!-- Elemento 6 — Botão CTA principal -->
-      <div class="cta-btn-wrap">
-        <a href="https://ggcheckout.app/checkout/v5/tYv4BiudM81i95gbyR8y" class="btn-white-solid" data-checkout="completo" aria-label="Quero Começar Agora — Adquirir Pacote Completo por R$34,90">
-          Quero Começar Agora →
-          <span class="btn-shimmer"></span>
-        </a>
-      </div>
-
-      <!-- Elemento 7 — Linha de micro-garantia -->
-      <p class="cta-micro-guarantee">
-        🔒 Acesso imediato <span class="dot-sep">·</span> 7 dias de garantia <span class="dot-sep">·</span> Sem burocracia
-      </p>
-
-      <!-- Elemento 8 — Frase de encerramento da conversa -->
-      <p class="cta-final-thought">
-        "Você já faz a comida. Agora é hora de mais gente provar."
-      </p>
-    </div>
-  </section>
-
-  <!-- ============================================================
-       SECTION 11 — RODAPÉ
-       ============================================================ -->
-  <footer data-screen-label="11 Rodapé">
-    <div class="wrap">
-      <p class="f-name">Venda para Toda a Sua Cidade</p>
-      <p>Moreira Digital LTDA · CNPJ 63.634.580/0001-99</p>
-      <p class="f-links">
-        <a href="#" data-legal="privacy">Política de Privacidade</a><span>·</span><a href="#" data-legal="terms">Termos de Uso</a>
-      </p>
-    </div>
+  <footer>
+    <p>Venda para Toda a Sua Cidade</p>
+    <p>Moreira Digital LTDA · CNPJ 63.634.580/0001-99</p>
+    <p>
+      <a href="#" data-legal="privacy">Política de Privacidade</a> | 
+      <a href="#" data-legal="terms">Termos de Uso</a>
+    </p>
   </footer>
 
-  <!-- STICKY CTA BAR -->
-  <div id="sticky">
-    <div class="wrap">
-      <a href="#oferta" class="btn btn-red btn-block">QUERO MEU GUIA AGORA</a>
-    </div>
+  <!-- STICKY CTA BAR (MOBILE ONLY / GLOBAL) -->
+  <div id="sticky-cta-bar">
+    <a href="#" class="btn-sticky">QUERO MEU GUIA AGORA</a>
   </div>
 
   <!-- DOWNSELL POPUP MODAL -->
   <div id="downsell-modal" class="modal-overlay" aria-hidden="true" role="dialog" aria-labelledby="downsell-title">
-    <div class="modal-card noise">
+    <div class="modal-card">
       <button class="modal-close-btn" id="downsell-close" aria-label="Fechar">&times;</button>
       <div class="modal-header">
         <span class="modal-gift-icon">🎁</span>
@@ -1353,7 +205,7 @@
         <p class="modal-subtitle">Antes de continuar com o Pacote Simples, veja essa condição especial que aparece uma única vez.</p>
       </div>
       <div class="modal-body">
-        <p class="modal-copy-intro">Você escolheu os 4 volumes — ótima escolha. Mas por <strong>só R$5,00 a mais</strong>, você leva também os 7 bônus exclusivos que aceleram tudo!</p>
+        <p>Você escolheu os 4 volumes — ótima escolha. Mas por <strong>só R$5,00 a mais</strong>, você leva também os 7 bônus exclusivos que aceleram tudo!</p>
         <ul class="modal-bonus-list">
           <li>🚀 Guia em 4 volumes</li>
           <li>🎁 7 Bônus exclusivos</li>
@@ -1363,7 +215,7 @@
         </div>
       </div>
       <div class="modal-footer">
-        <a href="https://ggcheckout.app/checkout/v5/ZQTAihwqOtnsWEFqy3FF" id="downsell-accept" data-checkout="downsell" class="btn btn-red btn-block">Sim! Quero tudo por R$24,90 →</a>
+        <a href="#" id="downsell-accept" data-checkout="downsell" class="btn-modal-accept">Sim! Quero tudo por R$24,90 →</a>
         <a href="#" id="downsell-decline" class="modal-decline-link">Não, prefiro continuar só com os volumes por R$19,90</a>
       </div>
     </div>
@@ -1380,10 +232,8 @@
     </div>
   </div>
 
-
-
-  <script src="https://unpkg.com/lucide@0.460.0/dist/umd/lucide.min.js"></script>
-  <script src="app.js"></script>
+  <!-- Lucide e JavaScript principal -->
+  <script src="app-v4.js"></script>
 
   <!-- Deferred Trackers Loading (1.2s delay after DOMContentLoaded) -->
   <script>
