@@ -72,7 +72,7 @@
         if (el.dataset.stagger) {
           var kids = el.querySelectorAll('.reveal, .reveal-l');
           kids.forEach(function (k, i) {
-            setTimeout(function () { k.classList.add('in'); }, i * 150);
+            setTimeout(function () { k.classList.add('in'); }, i * 75);
           });
         } else {
           el.classList.add('in');
@@ -121,39 +121,61 @@
   }
 
   /* ============================================================
-     BÔNUS FLIP — sequential when grid enters viewport
+     SECTION 8 — BÔNUS SECTION INTERACTIVITY & VIEWPORT REVEAL
      ============================================================ */
-  function setupBonusFlip() {
-    var grid = document.getElementById('bonus-grid');
-    if (!grid) return;
+  function setupBonusSection() {
+    var section = document.getElementById('bonus');
+    if (!section) return;
+
     var fired = false;
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {
-        if (!e.isIntersecting || fired) return;
-        fired = true;
-        var rows = grid.querySelectorAll('.bonus-row');
-        rows.forEach(function (row, i) {
-          setTimeout(function () {
-            row.classList.add('revealed');
-            // expand to reveal description slightly after sliding in
-            setTimeout(function () {
-              row.classList.add('expanded');
-            }, 180);
-          }, i * 220);
-        });
-        io.disconnect();
+        if (e.isIntersecting) {
+          section.classList.add('active');
+          io.unobserve(section);
+          
+          if (!fired) {
+            fired = true;
+            // 0.6s to 1.2s -> Card Bônus 01-07 appear with cascade (0.12s delay between cards)
+            var wrappers = section.querySelectorAll('.bonus-card-wrapper');
+            wrappers.forEach(function (wrap, idx) {
+              setTimeout(function () {
+                wrap.classList.add('in');
+              }, 300 + idx * 60);
+            });
+          }
+        }
       });
-    }, { threshold: 0.15 });
-    io.observe(grid);
+    }, { threshold: 0.12 });
+    io.observe(section);
 
-    // tap to toggle expand
-    grid.addEventListener('click', function (ev) {
-      var header = ev.target.closest('.bonus-header');
-      if (header) {
-        var row = header.closest('.bonus-row');
-        if (row) row.classList.toggle('expanded');
+    // Flip card trigger
+    var cards = section.querySelectorAll('.bonus-card-inner');
+    cards.forEach(function (card) {
+      card.addEventListener('click', function () {
+        card.classList.add('flipped');
+      });
+
+      var understandBtn = card.querySelector('.btn-bc-understand');
+      if (understandBtn) {
+        understandBtn.addEventListener('click', function (ev) {
+          ev.stopPropagation(); // prevent immediate reflipped since parent card has click listener
+          card.classList.remove('flipped');
+        });
       }
     });
+
+    // Return CTA smooth scroll to Completo card
+    var returnBtn = document.getElementById('btn-bonus-return');
+    if (returnBtn) {
+      returnBtn.addEventListener('click', function (e) {
+        e.preventDefault();
+        var target = document.getElementById('oferta-card-completo');
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+      });
+    }
   }
 
   /* ============================================================
@@ -199,111 +221,256 @@
     });
   }
 
-  function setupHeroTitle() {
-    var title = document.getElementById('hero-title');
-    if (!title) return;
-    var spans = splitWords(title);
-    // hero is above the fold — reveal on load
-    requestAnimationFrame(function () { revealWords(spans, 250); });
+  function setupHeroTimeline() {
+    var mockup = document.getElementById('hero-mockup');
+    var titleSpans = document.querySelectorAll('#hero-title .w');
+    var trigger = document.querySelector('.underline-trigger');
+    var subtitle = document.getElementById('hero-subtitle');
+    var support = document.getElementById('hero-support');
+    var ctaWrap = document.getElementById('hero-cta-container');
+    var ctaBtn = document.getElementById('hero-cta');
+    var scrollInd = document.getElementById('hero-scroll-indicator');
+
+    // 0.3s -> Mockup appears
+    setTimeout(function () {
+      if (mockup) mockup.classList.add('in');
+    }, 150);
+
+    // 0.8s -> Title word-by-word reveal starts (120ms between words)
+    titleSpans.forEach(function (span, index) {
+      setTimeout(function () {
+        span.classList.add('in');
+      }, 400 + index * 60);
+    });
+
+    // 1.6s -> Underline grows under "sua cidade inteira"
+    setTimeout(function () {
+      if (trigger) trigger.classList.add('active');
+    }, 400);
+
+    // 2.3s -> Pump pulse emphasis on "sua cidade inteira" once the title reveal and underline are complete
+    setTimeout(function () {
+      if (trigger) trigger.classList.add('pump-once');
+    }, 1150);
+
+    // 1.9s -> Subtitle appears
+    setTimeout(function () {
+      if (subtitle) subtitle.classList.add('in');
+    }, 950);
+
+    // 2.2s -> Supporting text appears
+    setTimeout(function () {
+      if (support) support.classList.add('in');
+    }, 1100);
+
+    // 2.5s -> CTA button appears
+    setTimeout(function () {
+      if (ctaWrap) ctaWrap.classList.add('in');
+    }, 1250);
+
+    // 2.8s -> CTA button pulse loop begins
+    setTimeout(function () {
+      if (ctaWrap) ctaWrap.classList.add('pulsing');
+      if (ctaBtn) ctaBtn.classList.add('pulsing');
+    }, 1400);
+
+    // 3.0s -> Scroll indicator appears
+    setTimeout(function () {
+      if (scrollInd) scrollInd.classList.add('in');
+    }, 1500);
+
+    // Also initialize magnetic CTA effect on desktop
+    setupMagneticButton();
+  }
+
+  function setupMagneticButton() {
+    var btn = document.getElementById('hero-cta');
+    if (!btn || window.innerWidth < 768) return; // Only on desktop/tablet
+
+    btn.addEventListener('mousemove', function (e) {
+      var rect = btn.getBoundingClientRect();
+      var x = e.clientX - rect.left - rect.width / 2;
+      var y = e.clientY - rect.top - rect.height / 2;
+      // move button by 25% of mouse offset and breathe scale
+      btn.style.transform = 'translate3d(' + (x * 0.25) + 'px, ' + (y * 0.25) + 'px, 0) scale(1.03)';
+    });
+
+    btn.addEventListener('mouseleave', function () {
+      btn.style.transform = 'translate3d(0, 0, 0)';
+    });
   }
 
   function setupFinalCta() {
-    var title = document.getElementById('cta-final-title');
-    if (!title) return;
-    var lines = title.querySelectorAll('span');
-    var groups = [];
-    lines.forEach(function (ln) { groups.push(splitWords(ln)); });
-    var fired = false;
-    var io = new IntersectionObserver(function (entries) {
+    const section = document.getElementById('cta-final');
+    if (!section) return;
+    
+    const io = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {
-        if (!e.isIntersecting || fired) return;
-        fired = true;
-        var delay = 0;
-        groups.forEach(function (g) {
-          revealWords(g, delay);
-          delay += g.length * 150 + 200;
-        });
-        io.disconnect();
+        if (e.isIntersecting) {
+          section.classList.add('active');
+          io.disconnect();
+        }
       });
-    }, { threshold: 0.4 });
-    io.observe(title);
+    }, { threshold: 0.12 });
+    io.observe(section);
   }
 
   /* ============================================================
      CAROUSEL — depoimentos (swipe + dots)
      ============================================================ */
   function setupCarousel() {
-    var track = document.getElementById('depo-track');
-    var dotsBox = document.getElementById('depo-dots');
-    var prevBtn = document.getElementById('depo-prev');
-    var nextBtn = document.getElementById('depo-next');
-    if (!track || !dotsBox) return;
-    var slides = track.children.length;
-    var index = 0;
-
-    for (var i = 0; i < slides; i++) {
-      var b = document.createElement('button');
-      b.setAttribute('aria-label', 'Depoimento ' + (i + 1));
-      (function (n) { b.addEventListener('click', function () { go(n); }); })(i);
-      dotsBox.appendChild(b);
-    }
-    var dots = dotsBox.children;
-
-    function go(n) {
-      index = Math.max(0, Math.min(slides - 1, n));
-      track.style.transform = 'translateX(' + (-index * 100) + '%)';
-      for (var j = 0; j < dots.length; j++) dots[j].classList.toggle('active', j === index);
-    }
-    go(0);
-
-    if (prevBtn) {
-      prevBtn.addEventListener('click', function () {
-        go(index - 1);
+    var section = document.getElementById('depoimentos');
+    if (!section) return;
+    var cards = section.querySelectorAll('.depo-card');
+    var dots = section.querySelectorAll('.depo-dot');
+    var prevBtn = section.querySelector('.depo-nav-btn.prev');
+    var nextBtn = section.querySelector('.depo-nav-btn.next');
+    if (cards.length === 0) return;
+    
+    var currentIndex = 0;
+    var timer = null;
+    var resumeTimer = null;
+    
+    function showSlide(index) {
+      var prevIndex = currentIndex;
+      currentIndex = (index + cards.length) % cards.length;
+      
+      cards.forEach(function(card, i) {
+        card.classList.remove('active', 'exit');
+        if (i === prevIndex) {
+          card.classList.add('exit');
+        }
+      });
+      
+      cards[currentIndex].classList.add('active');
+      
+      dots.forEach(function(dot, i) {
+        dot.classList.toggle('active', i === currentIndex);
       });
     }
-    if (nextBtn) {
-      nextBtn.addEventListener('click', function () {
-        go(index + 1);
-      });
+    
+    function nextSlide() {
+      showSlide(currentIndex + 1);
     }
-
-    // touch swipe
-    var startX = 0, dx = 0, dragging = false;
-    track.addEventListener('touchstart', function (e) { startX = e.touches[0].clientX; dragging = true; dx = 0; }, { passive: true });
-    track.addEventListener('touchmove', function (e) { if (dragging) dx = e.touches[0].clientX - startX; }, { passive: true });
-    track.addEventListener('touchend', function () {
-      if (!dragging) return;
-      dragging = false;
-      if (Math.abs(dx) > 45) go(index + (dx < 0 ? 1 : -1));
+    
+    function prevSlide() {
+      showSlide(currentIndex - 1);
+    }
+    
+    function startAutoplay() {
+      stopAutoplay();
+      timer = setInterval(nextSlide, 6000);
+    }
+    
+    function stopAutoplay() {
+      if (timer) clearInterval(timer);
+    }
+    
+    function handleUserInteraction() {
+      stopAutoplay();
+      clearTimeout(resumeTimer);
+      resumeTimer = setTimeout(startAutoplay, 1500);
+    }
+    
+    if (prevBtn) prevBtn.addEventListener('click', function() { prevSlide(); handleUserInteraction(); });
+    if (nextBtn) nextBtn.addEventListener('click', function() { nextSlide(); handleUserInteraction(); });
+    
+    dots.forEach(function(dot, i) {
+      dot.addEventListener('click', function() { showSlide(i); handleUserInteraction(); });
     });
+    
+    // Swipe gestures on mobile
+    var touchStartX = 0;
+    var touchEndX = 0;
+    var trackContainer = section.querySelector('.depo-carousel-track-container');
+    if (trackContainer) {
+      trackContainer.addEventListener('touchstart', function(e) {
+        touchStartX = e.changedTouches[0].screenX;
+        stopAutoplay();
+      }, { passive: true });
+      
+      trackContainer.addEventListener('touchend', function(e) {
+        touchEndX = e.changedTouches[0].screenX;
+        var diff = touchStartX - touchEndX;
+        if (Math.abs(diff) > 40) {
+          if (diff > 0) {
+            nextSlide();
+          } else {
+            prevSlide();
+          }
+        }
+        handleUserInteraction();
+      }, { passive: true });
+    }
+    
+    section.addEventListener('mouseenter', stopAutoplay);
+    section.addEventListener('mouseleave', startAutoplay);
+    
+    startAutoplay();
   }
 
   /* ============================================================
      FAQ ACCORDION
      ============================================================ */
   function setupFaq() {
-    var items = document.querySelectorAll('.faq-item');
+    const faqSection = document.getElementById('faq');
+    if (!faqSection) return;
+    
+    const items = faqSection.querySelectorAll('.faq-accordion-item');
     items.forEach(function (item) {
-      var q = item.querySelector('.faq-q');
-      var a = item.querySelector('.faq-a');
-      q.addEventListener('click', function () {
-        var isOpen = item.classList.contains('open');
-        // close others
-        items.forEach(function (other) {
-          if (other !== item) {
-            other.classList.remove('open');
-            other.querySelector('.faq-a').style.maxHeight = '0px';
+      const btn = item.querySelector('.faq-accordion-item__btn');
+      const answer = item.querySelector('.faq-accordion-item__answer');
+      if (!btn || !answer) return;
+      
+      btn.addEventListener('click', function () {
+        const isOpen = item.classList.contains('is-open');
+        
+        // Close other items
+        items.forEach(function (i) {
+          if (i !== item) {
+            i.classList.remove('is-open');
+            const ans = i.querySelector('.faq-accordion-item__answer');
+            if (ans) ans.style.maxHeight = null;
           }
         });
+        
+        // Toggle current item
         if (isOpen) {
-          item.classList.remove('open');
-          a.style.maxHeight = '0px';
+          item.classList.remove('is-open');
+          answer.style.maxHeight = null;
+          btn.setAttribute('aria-expanded', 'false');
         } else {
-          item.classList.add('open');
-          a.style.maxHeight = a.scrollHeight + 'px';
+          item.classList.add('is-open');
+          answer.style.maxHeight = answer.scrollHeight + 'px';
+          btn.setAttribute('aria-expanded', 'true');
         }
       });
     });
+    
+    // Intersection observer to animate entrance & auto-open first item
+    const io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) {
+          faqSection.classList.add('active');
+          
+          // Auto-open first item after 0.8s
+          setTimeout(function () {
+            const firstItem = items[0];
+            const firstAnswer = firstItem ? firstItem.querySelector('.faq-accordion-item__answer') : null;
+            const firstBtn = firstItem ? firstItem.querySelector('.faq-accordion-item__btn') : null;
+            // Only open if the user hasn't interacted/opened anything else yet
+            if (firstItem && firstAnswer && firstBtn && !faqSection.querySelector('.faq-accordion-item.is-open')) {
+              firstItem.classList.add('is-open');
+              firstAnswer.style.maxHeight = firstAnswer.scrollHeight + 'px';
+              firstBtn.setAttribute('aria-expanded', 'true');
+            }
+          }, 400);
+          
+          io.unobserve(faqSection);
+        }
+      });
+    }, { threshold: 0.15 });
+    io.observe(faqSection);
   }
 
   /* ============================================================
@@ -538,33 +705,7 @@
       });
     });
 
-    // Exit Intent - Desktop (detect mouse leaving top of the screen)
-    document.addEventListener('mouseleave', function (e) {
-      if (e.clientY < 20 && !hasShownDownsell) {
-        markDownsellAsShown();
-        openDownsellModal();
-      }
-    });
 
-    // Exit Intent - Mobile (History API back-button interception)
-    if (window.history && window.history.pushState) {
-      // Setup history states to intercept back button
-      try {
-        window.history.pushState({ exitIntent: true }, '');
-        window.history.pushState({ main: true }, '');
-
-        window.addEventListener('popstate', function (e) {
-          if (e.state && e.state.exitIntent && !hasShownDownsell) {
-            markDownsellAsShown();
-            openDownsellModal();
-            // Re-push main state to allow back navigation subsequent clicks to work
-            window.history.pushState({ main: true }, '');
-          }
-        });
-      } catch (err) {
-        console.warn('History API not fully supported or restricted:', err);
-      }
-    }
 
     // Global capture-phase click listener to set hasShownDownsell = true instantly for checkout links (except first simples click)
     document.addEventListener('click', function (e) {
@@ -598,68 +739,295 @@
   /* ============================================================
      HERO ALTERNATION (Covers <=> Photos every 1.5s)
      ============================================================ */
-  function setupHeroAlternate() {
-    var container = document.getElementById('hero-stack-container');
-    if (!container) return;
+  // setupHeroAlternate removed in LP V3 in favor of static 3D Book Fan Mockup
 
-    var covers = container.querySelectorAll('.cover-item');
-    var photos = container.querySelectorAll('.photo-item');
-    if (covers.length === 0 || photos.length === 0) return;
-
-    var showCovers = true;
-
-    function toggle(targetState) {
-      showCovers = targetState;
-      covers.forEach(function (el) {
-        el.classList.toggle('active', showCovers);
+  /* ============================================================
+     SECTION 2 — A DOR NOMEADA VIEWPORT OBSERVER
+     ============================================================ */
+  function setupDorReveal() {
+    var dor = document.getElementById('dor');
+    if (!dor) return;
+    var ioDor = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) {
+          dor.classList.add('active');
+          ioDor.unobserve(dor);
+        }
       });
-      photos.forEach(function (el) {
-        el.classList.toggle('active', !showCovers);
+    }, { threshold: 0.15 });
+    ioDor.observe(dor);
+  }
+
+  /* ============================================================
+     SECTION 3 — A VIRADA VIEWPORT OBSERVER & STEP TIMINGS
+     ============================================================ */
+  function setupViradaReveal() {
+    var virada = document.getElementById('virada');
+    if (!virada) return;
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) {
+          virada.classList.add('active');
+          
+          var steps = virada.querySelectorAll('.flow-step');
+          var arrows = virada.querySelectorAll('.flow-arrow');
+          
+          // Etapas surgem a partir de 1.4s em sequência (intervalos de 250ms)
+          steps.forEach(function (step, idx) {
+            setTimeout(function () {
+              step.classList.add('in');
+            }, 700 + idx * 125);
+          });
+          
+          // Setas surgem logo após a etapa correspondente surgir
+          arrows.forEach(function (arrow, idx) {
+            setTimeout(function () {
+              arrow.classList.add('in');
+            }, 700 + idx * 125 + 130);
+          });
+          
+          io.unobserve(virada);
+        }
       });
+    }, { threshold: 0.15 });
+    io.observe(virada);
+  }
+
+  /* ============================================================
+     SECTION 4 — PROVA DE QUE É PRA ELA VIEWPORT OBSERVER & SPEEDOMETER
+     ============================================================ */
+  function setupProvaReveal() {
+    var section = document.getElementById('prova');
+    if (!section) return;
+    
+    var fired = false;
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) {
+          section.classList.add('active');
+          io.unobserve(section);
+          
+          // Disparar os contadores velocímetros em 1.2s
+          if (!fired) {
+            fired = true;
+            setTimeout(function () {
+              runSpeedometer('proof-num-alunas', 847, 500);
+              runSpeedometer('proof-num-estados', 12, 500);
+            }, 600);
+          }
+        }
+      });
+    }, { threshold: 0.15 });
+    io.observe(section);
+  }
+
+  function runSpeedometer(id, target, duration) {
+    var el = document.getElementById(id);
+    if (!el) return;
+    var startTime = null;
+
+    function step(currentTime) {
+      if (!startTime) startTime = currentTime;
+      var progress = Math.min((currentTime - startTime) / duration, 1);
+      // Easing cúbico de desaceleração (velocímetro)
+      var eased = 1 - Math.pow(1 - progress, 3);
+      el.textContent = Math.round(eased * target);
+      if (progress < 1) {
+        requestAnimationFrame(step);
+      }
     }
+    requestAnimationFrame(step);
+  }
 
-    // Custom sequential timing sequence:
-    // 1st Change: 1.5s -> show Photos
-    // 2nd Change: 3.0s (1.5s after 1st) -> show Covers
-    // 3rd Change: 5.0s (2.0s after 2nd) -> show Photos
-    // 4th Change: 8.0s (3.0s after 3rd) -> show Covers
-    // Sub-sequent loops: every 8.0s after 8s (16s, 24s, 32s, etc.)
-    setTimeout(function () {
-      toggle(false); // 1.5s -> Photos active
+  /* ============================================================
+     SECTION 5 — OS 4 VOLUMES VIEWPORT OBSERVER
+     ============================================================ */
+  function setupVolumesReveal() {
+    var section = document.getElementById('volumes');
+    if (!section) return;
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) {
+          section.classList.add('active');
+          io.unobserve(section);
+        }
+      });
+    }, { threshold: 0.12 });
+    io.observe(section);
+  }
 
-      setTimeout(function () {
-        toggle(true); // 3.0s -> Covers active
+  /* ============================================================
+     SECTION 6 — DEPOIMENTOS VIEWPORT OBSERVER & TRUST COUNTER
+     ============================================================ */
+  function setupDepoimentosReveal() {
+    var section = document.getElementById('depoimentos');
+    if (!section) return;
+    var fired = false;
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) {
+          section.classList.add('active');
+          io.unobserve(section);
+          
+          if (!fired) {
+            fired = true;
+            setTimeout(function () {
+              animateTrustCounter('trust-counter-vendedoras', 847, 600);
+            }, 1000);
+          }
+        }
+      });
+    }, { threshold: 0.12 });
+    io.observe(section);
+  }
 
-        setTimeout(function () {
-          toggle(false); // 5.0s -> Photos active
+  function animateTrustCounter(id, target, duration) {
+    var el = document.getElementById(id);
+    if (!el) return;
+    var startTime = null;
 
-          setTimeout(function () {
-            toggle(true); // 8.0s -> Covers active
+    function step(currentTime) {
+      if (!startTime) startTime = currentTime;
+      var progress = Math.min((currentTime - startTime) / duration, 1);
+      var eased = progress * (2 - progress);
+      el.textContent = Math.round(eased * target);
+      if (progress < 1) {
+        requestAnimationFrame(step);
+      }
+    }
+    requestAnimationFrame(step);
+  }
 
-            // Indefinite loop: toggles state every 8 seconds
-            setInterval(function () {
-              toggle(!showCovers);
-            }, 8000);
+  /* ============================================================
+     SECTION 7 — OFERTA VIEWPORT OBSERVER & PRICE COUNTDOWN
+     ============================================================ */
+  function setupOfertaReveal() {
+    var section = document.getElementById('oferta');
+    if (!section) return;
+    var fired = false;
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) {
+          section.classList.add('active');
+          io.unobserve(section);
+          
+          if (!fired) {
+            fired = true;
+            
+            // 1.0s -> Lista de bônus do Card Completo se revela linha por linha (0.08s delay)
+            var bonusItems = section.querySelectorAll('.pc-bonus-item');
+            bonusItems.forEach(function (item, idx) {
+              setTimeout(function () {
+                item.classList.add('in');
+              }, 500 + idx * 40);
+            });
+            
+            // 1.8s -> Counter de preço cai de R$134,90 para R$34,90 em 1.2s
+            setTimeout(function () {
+              runPriceCounter('completo-price-val-row', 134.90, 34.90, 600);
+            }, 900);
+            
+            // 2.0s -> Pulso de borda do card completo começa em loop
+            setTimeout(function () {
+              var completoCard = document.getElementById('oferta-card-completo');
+              if (completoCard) completoCard.classList.add('glow-active');
+            }, 2000);
+          }
+        }
+      });
+    }, { threshold: 0.12 });
+    io.observe(section);
+  }
 
-          }, 3000); // 8.0s - 5.0s = 3.0s
-        }, 2000); // 5.0s - 3.0s = 2.0s
-      }, 1500); // 3.0s - 1.5s = 1.5s
-    }, 1500); // 1.5s from start
+  function runPriceCounter(id, start, end, duration) {
+    var el = document.getElementById(id);
+    if (!el) return;
+    var startTime = null;
+
+    function step(currentTime) {
+      if (!startTime) startTime = currentTime;
+      var progress = Math.min((currentTime - startTime) / duration, 1);
+      var eased = progress * (2 - progress);
+      var current = start - (start - end) * eased;
+      el.innerHTML = 'R$' + current.toFixed(2).replace('.', ',');
+      if (progress < 1) {
+        requestAnimationFrame(step);
+      }
+    }
+    requestAnimationFrame(step);
+  }
+
+  /* ============================================================
+     SECTION 9 — GARANTIA VIEWPORT OBSERVER & PULSE ANIMATIONS
+     ============================================================ */
+  function setupGarantiaSection() {
+    var section = document.getElementById('garantia');
+    if (!section) return;
+
+    var fired = false;
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) {
+          section.classList.add('active');
+          io.unobserve(section);
+          
+          if (!fired) {
+            fired = true;
+
+            // 0.6s -> Shield pulse active in loop
+            setTimeout(function () {
+              var shield = document.getElementById('garantia-shield');
+              if (shield) shield.classList.add('pulse-active');
+            }, 600);
+
+            // 2.0s -> 3 lines of coverage slide in
+            var items = section.querySelectorAll('.garantia-cover-item');
+            items.forEach(function (item, idx) {
+              setTimeout(function () {
+                item.style.opacity = '1';
+                item.style.transform = 'translate3d(0, 0, 0)';
+              }, 2000 + idx * 150);
+            });
+          }
+        }
+      });
+    }, { threshold: 0.12 });
+    io.observe(section);
+
+    // Smooth Scroll triggers for return CTA and discrete link
+    var cta = document.getElementById('btn-garantia-cta');
+    var link = document.getElementById('link-garantia-discrete');
+    
+    function scrollToOffer(e) {
+      e.preventDefault();
+      var target = document.getElementById('oferta');
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+    
+    if (cta) cta.addEventListener('click', scrollToOffer);
+    if (link) link.addEventListener('click', scrollToOffer);
   }
 
   /* ============================================================
      INIT
      ============================================================ */
   function init() {
-    buildBonus();
     setupMarquee();
     setupRealMarquee();
     drawIcons();          // after dynamic content is in the DOM
     setupReveals();
     setupCounter();
-    setupBonusFlip();
-    setupShield();
-    setupHeroTitle();
+    setupHeroTimeline();
+    setupDorReveal();
+    setupViradaReveal();
+    setupProvaReveal();
+    setupVolumesReveal();
+    setupDepoimentosReveal();
+    setupOfertaReveal();
+    setupBonusSection();
+    setupGarantiaSection();
     setupFinalCta();
     setupCarousel();
     setupFaq();
@@ -670,7 +1038,6 @@
     setupDownsell();
     initLegal();
     setupCheckoutTracking();
-    setupHeroAlternate();
   }
 
   /* ============================================================
