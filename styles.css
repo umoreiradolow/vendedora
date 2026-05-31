@@ -617,7 +617,7 @@ img.cover {
 
 /* Elemento 7 — Indicador de scroll */
 .hero-scroll {
-  margin-top: 32px;
+  margin-top: 18px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -632,7 +632,7 @@ img.cover {
 .scroll-text {
   font-size: 11px;
   font-weight: 400;
-  color: rgba(255,255,255,0.4);
+  color: rgba(255,255,255,0.75);
   letter-spacing: 0.05em;
   text-transform: uppercase;
 }

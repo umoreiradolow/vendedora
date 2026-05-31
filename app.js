@@ -227,8 +227,6 @@
     var trigger = document.querySelector('.underline-trigger');
     var subtitle = document.getElementById('hero-subtitle');
     var support = document.getElementById('hero-support');
-    var ctaWrap = document.getElementById('hero-cta-container');
-    var ctaBtn = document.getElementById('hero-cta');
     var scrollInd = document.getElementById('hero-scroll-indicator');
 
     // 0.3s -> Mockup appears
@@ -263,41 +261,10 @@
       if (support) support.classList.add('in');
     }, 1100);
 
-    // 2.5s -> CTA button appears
-    setTimeout(function () {
-      if (ctaWrap) ctaWrap.classList.add('in');
-    }, 1250);
-
-    // 2.8s -> CTA button pulse loop begins
-    setTimeout(function () {
-      if (ctaWrap) ctaWrap.classList.add('pulsing');
-      if (ctaBtn) ctaBtn.classList.add('pulsing');
-    }, 1400);
-
     // 3.0s -> Scroll indicator appears
     setTimeout(function () {
       if (scrollInd) scrollInd.classList.add('in');
     }, 1500);
-
-    // Also initialize magnetic CTA effect on desktop
-    setupMagneticButton();
-  }
-
-  function setupMagneticButton() {
-    var btn = document.getElementById('hero-cta');
-    if (!btn || window.innerWidth < 768) return; // Only on desktop/tablet
-
-    btn.addEventListener('mousemove', function (e) {
-      var rect = btn.getBoundingClientRect();
-      var x = e.clientX - rect.left - rect.width / 2;
-      var y = e.clientY - rect.top - rect.height / 2;
-      // move button by 25% of mouse offset and breathe scale
-      btn.style.transform = 'translate3d(' + (x * 0.25) + 'px, ' + (y * 0.25) + 'px, 0) scale(1.03)';
-    });
-
-    btn.addEventListener('mouseleave', function () {
-      btn.style.transform = 'translate3d(0, 0, 0)';
-    });
   }
 
   function setupFinalCta() {
